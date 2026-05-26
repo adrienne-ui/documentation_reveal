@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qwarry Reveal — User Guide</title>
+  <style>
+    :root{--primary:#6c3baa;--primary-light:#f3eefa;--text:#2d2d2d;--muted:#666;--border:#e0e0e0;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text);line-height:1.7;}
+    a{color:var(--primary);text-decoration:none;}a:hover{text-decoration:underline;}
+    .sidebar{position:fixed;top:0;left:0;width:280px;height:100vh;background:#1b2a4a;color:#fff;padding:2rem 1.5rem;overflow-y:auto;}
+    .sidebar h2{font-size:1.1rem;margin-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:1rem;}
+    .sidebar ul{list-style:none;}.sidebar li{margin-bottom:0.4rem;}
+    .sidebar a{color:rgba(255,255,255,0.85);font-size:0.85rem;display:block;padding:0.3rem 0.5rem;border-radius:4px;}
+    .sidebar a:hover{background:rgba(255,255,255,0.1);color:#fff;text-decoration:none;}
+    .content{margin-left:280px;padding:3rem 4rem;max-width:920px;}
+    h1{font-size:2rem;color:#1b2a4a;margin-bottom:0.5rem;}
+    h2{font-size:1.5rem;color:#1b2a4a;margin-top:3rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--primary-light);}
+    h3{font-size:1.15rem;margin-top:2rem;margin-bottom:0.5rem;}
+    p,li{margin-bottom:0.6rem;}ul,ol{padding-left:1.5rem;}
+    .subtitle{color:var(--muted);font-size:0.95rem;margin-bottom:2rem;}
+    table{width:100%;border-collapse:collapse;margin:1rem 0 1.5rem;font-size:0.9rem;}
+    th{background:var(--primary-light);color:var(--primary);text-align:left;padding:0.6rem 0.8rem;}
+    td{padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);}
+    tr:hover td{background:#fafafa;}
+    .note{background:#eef6ff;border-left:4px solid #3b82f6;padding:1rem 1.2rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem;}
+    code{background:#f4f4f4;padding:0.15rem 0.4rem;border-radius:3px;font-size:0.85rem;}
+    img.screenshot{max-width:100%;border:1px solid var(--border);border-radius:6px;margin:0.5rem 0 1rem;display:block;}
+    .badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600;background:#e8eaf6;color:#3949ab;margin:0.1rem;}
+    @media(max-width:768px){.sidebar{position:static;width:100%;height:auto;}.content{margin-left:0;padding:2rem 1.5rem;}}
+  </style>
+</head>
+<body>
+<nav class="sidebar">
+  <h2>Reveal by Qwarry<br>User Guide</h2>
+  <ul>
+    <li><a href="#introduction">1. Introduction</a></li>
+    <li><a href="#getting-started">2. Getting Started</a></li>
+    <li><a href="#navigation">3. Navigation</a></li>
+    <li><a href="#campaigns">4. Campaign List</a></li>
+    <li><a href="#overview">5. Overview Tab</a></li>
+    <li><a href="#domains">6. Domains Tab</a></li>
+    <li><a href="#semos">7. Semos Tab</a></li>
+    <li><a href="#personae">8. Contextual Personae Tab</a></li>
+    <li><a href="#safety">9. Brand Safety &amp; Sentiment</a></li>
+    <li><a href="#reports">10. Reports</a></li>
+    <li><a href="#setup">11. Setup &amp; Objectives</a></li>
+    <li><a href="#pixels">12. Pixels</a></li>
+    <li><a href="#glossary">13. Glossary</a></li>
+    <li><a href="#troubleshooting">14. Troubleshooting</a></li>
+  </ul>
+</nav>
+<main class="content">
+<h1>Reveal by Qwarry — User Guide</h1>
+<p class="subtitle">URL: <a href="https://reveal.qwarry.com/">https://reveal.qwarry.com/</a> · Languages: English, French · Last updated: May 2026</p>
+
+<!-- 1. Introduction -->
+<h2 id="introduction">1. Introduction</h2>
+<p><strong>Reveal by Qwarry</strong> is a campaign analytics platform that provides advertisers and media buyers with deep insights into their digital advertising campaigns. Using Qwarry's proprietary semantic analysis and cookieless targeting technology, Reveal analyzes ad impressions to deliver:</p>
+<ul>
+  <li><strong>Brand Safety &amp; Sentiment</strong> scoring</li>
+  <li><strong>Semantic categorization</strong> (Semos) of content where ads are served</li>
+  <li><strong>Contextual Personae</strong> — audience profiling based on content consumption</li>
+  <li><strong>Domain-level analytics</strong> and reporting</li>
+  <li><strong>PPTX report generation</strong> for client presentations</li>
+</ul>
+
+<!-- 2. Getting Started -->
+<h2 id="getting-started">2. Getting Started</h2>
+<h3>Login</h3>
+<ol>
+  <li>Go to <a href="https://reveal.qwarry.com/login">https://reveal.qwarry.com/login</a></li>
+  <li>Enter your email and password.</li>
+  <li>Click <strong>Login</strong>.</li>
+</ol>
+<h3>Forgot Password</h3>
+<ol>
+  <li>Click <strong>Forgot password?</strong> on the login page.</li>
+  <li>Enter your email address and click <strong>Continue</strong>.</li>
+  <li>Follow the reset link sent to your email.</li>
+</ol>
+
+<!-- 3. Navigation -->
+<h2 id="navigation">3. Navigation</h2>
+<p>The top-right corner shows your initials. Click on it to open the dropdown menu:</p>
+<img src="reaveal_capture/menu.png" alt="Navigation dropdown menu" class="screenshot" style="max-width:250px;">
+<table>
+  <thead><tr><th>Menu Item</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Edit Profile</strong></td><td>Update your personal information</td></tr>
+    <tr><td><strong>Glossary</strong></td><td>Definitions of all key terms</td></tr>
+    <tr><td><strong>Pixels</strong></td><td>Create and manage tracking pixels</td></tr>
+    <tr><td><strong>Users</strong></td><td>User management (admin)</td></tr>
+    <tr><td><strong>FR / GB</strong></td><td>Switch between French and English</td></tr>
+    <tr><td><strong>Log out</strong></td><td>End your session</td></tr>
+  </tbody>
+</table>
+
+<!-- 4. Campaign List -->
+<h2 id="campaigns">4. Campaign List</h2>
+<img src="reaveal_capture/acceuil.png" alt="Campaign list home page" class="screenshot">
+<p>The home page displays all campaigns associated with your account. The table shows:</p>
+<ul>
+  <li><strong>Campaign</strong> — Campaign name with its pixel ID (e.g. #5413)</li>
+  <li><strong>Scored Impressions</strong> — Total number of impressions analyzed</li>
+  <li><strong>Scored %</strong> — Percentage of impressions successfully scored (with progress ring)</li>
+</ul>
+<p>Use the <strong>Search</strong> bar to filter campaigns by name. Use the <strong>date picker</strong> (top right) to select the analysis period.</p>
+<p>Click on any campaign to access its detailed analytics.</p>
+
+<!-- 5. Overview Tab -->
+<h2 id="overview">5. Overview Tab</h2>
+<p>After selecting a campaign, you land on the Overview tab. The header shows the campaign name, date range picker, and a <strong>Dimensions</strong> filter button.</p>
+<img src="reaveal_capture/dash1.png" alt="Campaign header with tabs" class="screenshot">
+<p>The tab bar provides access to: <strong>Overview</strong>, <strong>Domains</strong>, <strong>Semos</strong>, <strong>Contextual Personae</strong>, <strong>Brand Safety &amp; Sentiment</strong>, <strong>Reports</strong>, <strong>Setup &amp; Objectives</strong>.</p>
+<p>The top section displays three summary cards:</p>
+<ul>
+  <li><strong>Total URLs</strong> — Number of unique URLs where ads were served</li>
+  <li><strong>Total Domains</strong> — Number of unique domains</li>
+  <li><strong>Top Language</strong> — Most common content language (with percentage)</li>
+</ul>
+
+<h3>KPI Summary &amp; Impressions Chart</h3>
+<img src="reaveal_capture/dash2.png" alt="KPI summary and impressions timeline" class="screenshot">
+<p>Below the cards, four KPIs are displayed:</p>
+<ul>
+  <li><strong>Impressions</strong> — Total impressions (e.g. 44K)</li>
+  <li><strong>Scored Impressions</strong> — Impressions analyzed by Reveal (e.g. 36K)</li>
+  <li><strong>Brand Safety</strong> — Percentage of brand-safe impressions (e.g. 99.47%)</li>
+  <li><strong>Sentiment</strong> — Percentage of positive sentiment</li>
+</ul>
+<p>A timeline chart shows daily impression volume over the selected period.</p>
+
+<h3>Top Domains &amp; Top Languages</h3>
+<img src="reaveal_capture/dash3.png" alt="Top domains and top languages donut charts" class="screenshot">
+<p>Two donut charts display:</p>
+<ul>
+  <li><strong>Top domains</strong> — Distribution of impressions across domains (with favicon, name, and percentage). Click <strong>View all</strong> to see the full list.</li>
+  <li><strong>Top languages</strong> — Language distribution of content.</li>
+</ul>
+
+<h3>Top Semos &amp; Top Contextual Personae</h3>
+<img src="reaveal_capture/dash4.png" alt="Top Semos and Top Contextual Personae bar charts" class="screenshot">
+<p>Two horizontal bar charts show:</p>
+<ul>
+  <li><strong>Top Semos</strong> — Top 5 semantic categories with impression count and percentage</li>
+  <li><strong>Top Contextual Personae</strong> — Top 5 audience profiles with impression count and percentage</li>
+</ul>
+<div class="note">
+  <strong>Note:</strong> The Semos and Contextual Personae data displayed is unique to each campaign and depends on the content of the websites where ads were served during the selected period.
+</div>
+<p>Click <strong>View all</strong> to navigate to the full tab.</p>
+
+<!-- 6. Domains Tab -->
+<h2 id="domains">6. Domains Tab</h2>
+<img src="reaveal_capture/domains.png" alt="Domains tab - domain list table" class="screenshot">
+<p>The Domains tab shows a <strong>Domain list</strong> table with the following features:</p>
+<ul>
+  <li><strong>Filter</strong> — Filter domains by criteria</li>
+  <li><strong>Column Filter</strong> — Choose which columns to display</li>
+  <li><strong>Export</strong> — Export data to CSV (sent by email)</li>
+  <li><strong>Search</strong> — Search for a specific domain</li>
+</ul>
+<p>Table columns include:</p>
+<table>
+  <thead><tr><th>Column</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>Domain</td><td>Domain name with favicon</td></tr>
+    <tr><td>Impressions</td><td>Total impressions on this domain</td></tr>
+    <tr><td>Scored Impressions</td><td>Impressions analyzed by Reveal</td></tr>
+  </tbody>
+</table>
+<p>Additional columns available via Column Filter: % Impressions, % Scored Impressions, Scored %, Top Category, Language, Brand Safety, Brand Suitability, Sentiment.</p>
+<p>Click on any domain to see its detailed breakdown.</p>
+
+<!-- 7. Semos Tab -->
+<h2 id="semos">7. Semos Tab</h2>
+<img src="reaveal_capture/semos1.png" alt="Semos tab - chart and demographics" class="screenshot">
+<p>The Semos tab shows:</p>
+<ul>
+  <li><strong>Scored Impressions</strong> total (e.g. 36K)</li>
+  <li>A <strong>daily bar chart</strong> showing impression distribution across top Semos over time (color-coded by category)</li>
+  <li><strong>Age &amp; Gender</strong> table (Source: Panelists) — Breakdown by age group (18-24, 25-34, 35-50, 50-64, 65+) with Men/Women/Total percentages</li>
+</ul>
+
+<h3>Semos List</h3>
+<img src="reaveal_capture/semos2.png" alt="Semos list table" class="screenshot">
+<p>A paginated table listing all Semos with:</p>
+<ul>
+  <li><strong>Semo</strong> — Category name</li>
+  <li><strong>Scored Impressions</strong> — Number of scored impressions</li>
+  <li><strong>% Scored Impressions</strong> — Percentage of total</li>
+</ul>
+<div class="note">
+  <strong>Note:</strong> The Semos and their values vary per campaign. They reflect the semantic content of the pages where the campaign's ads were actually delivered.
+</div>
+<p>Use <strong>Export</strong> to download or <strong>Search</strong> to filter. Pagination controls at the bottom (Rows per page, Go to page).</p>
+
+<h3>SubSemos List</h3>
+<img src="reaveal_capture/semos3.png" alt="SubSemos list table" class="screenshot">
+<p>A detailed breakdown into subcategories (e.g. Healthy Cooking and Eating, Outdoor Decorating, Cocktails, Vegetarian Diets, Desserts and Baking, etc.) with the same columns.</p>
+
+<!-- 8. Contextual Personae Tab -->
+<h2 id="personae">8. Contextual Personae Tab</h2>
+<img src="reaveal_capture/context1.png" alt="Contextual Personae tab - chart" class="screenshot">
+<p>Similar layout to the Semos tab:</p>
+<ul>
+  <li><strong>Scored Impressions</strong> total</li>
+  <li>A <strong>daily bar chart</strong> showing impression distribution across top Contextual Personae over time</li>
+</ul>
+
+<h3>Contextual Personae List</h3>
+<img src="reaveal_capture/context2.png" alt="Contextual Personae list table" class="screenshot">
+<p>Paginated table with:</p>
+<ul>
+  <li><strong>Contextual Personae</strong> — Profile name</li>
+  <li><strong>Scored Impressions</strong> — Number of impressions</li>
+  <li><strong>% Scored Impressions</strong> — Percentage of total</li>
+</ul>
+<div class="note">
+  <strong>Note:</strong> The Contextual Personae and their distribution are specific to each campaign. They reflect the audience profiles associated with the content where ads were served.
+</div>
+
+<!-- 9. Brand Safety & Sentiment -->
+<h2 id="safety">9. Brand Safety &amp; Sentiment Tab</h2>
+<img src="reaveal_capture/safety.png" alt="Brand Safety & Sentiment tab - chart" class="screenshot">
+<p>The top section shows two KPIs:</p>
+<ul>
+  <li><strong>Non brand safe impressions</strong> — Count of unsafe impressions (e.g. 188)</li>
+  <li><strong>Negative impressions</strong> — Count of negative sentiment impressions (e.g. 34K)</li>
+</ul>
+<p>A daily bar chart shows the distribution of sensitive categories over time: Natural Disasters, Political news, Adult, Religion, Social Issues, Tobacco, and Others.</p>
+
+<h3>Sensitive Semos List</h3>
+<img src="reaveal_capture/safety2.png" alt="Sensitive Semos list" class="screenshot">
+<p>Table listing all sensitive categories detected:</p>
+<table>
+  <thead><tr><th>Sensitive Semo</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td>Natural Disasters</td><td>31.13%</td></tr>
+    <tr><td>Political news</td><td>31.13%</td></tr>
+    <tr><td>Adult</td><td>11.32%</td></tr>
+    <tr><td>Religion</td><td>7.55%</td></tr>
+    <tr><td>Social Issues</td><td>4.72%</td></tr>
+    <tr><td>Tobacco</td><td>4.72%</td></tr>
+    <tr><td>Crime</td><td>3.77%</td></tr>
+    <tr><td>Injuries</td><td>3.77%</td></tr>
+    <tr><td>Hate Speech</td><td>0.94%</td></tr>
+    <tr><td>Violence</td><td>0.94%</td></tr>
+  </tbody>
+</table>
+
+<h3>Risk Domains</h3>
+<img src="reaveal_capture/safety1.png" alt="Risk Domains table" class="screenshot">
+<p>Lists domains flagged as risky with columns: Domain (clickable link), Scored Impressions, Brand Safety, % Sentiment.</p>
+
+<!-- 10. Reports -->
+<h2 id="reports">10. Reports</h2>
+<img src="reaveal_capture/report.png" alt="Report Builder page" class="screenshot">
+<p>The <strong>Report Builder</strong> allows you to generate PowerPoint (PPTX) presentations from your campaign data.</p>
+<p>To generate a report:</p>
+<ol>
+  <li><strong>Report Name</strong> — Enter a name for the report (e.g. "Report CR7")</li>
+  <li><strong>Select Output File</strong> — Choose <strong>PPT</strong> format</li>
+  <li><strong>Date range</strong> — Select the period to cover</li>
+  <li><strong>Select Data</strong> — Choose which sections to include (multi-select): Overview, Domains, Semos, Tribes</li>
+  <li><strong>Select dimension</strong> — Optionally filter by dimension</li>
+  <li>Click <strong>Generate Report</strong></li>
+</ol>
+<div class="note">
+  <strong>Note:</strong> Reports are generated asynchronously as PPTX files. You will receive an email with the download link when the report is ready. The generated presentation includes charts, tables, and key metrics ready to share with clients.
+</div>
+
+<!-- 11. Setup & Objectives -->
+<h2 id="setup">11. Setup &amp; Objectives</h2>
+<p>The Setup &amp; Objectives tab has two sub-tabs: <strong>Setup</strong> and <strong>Objectives</strong>.</p>
+
+<h3>Setup</h3>
+<img src="reaveal_capture/setup1.png" alt="Setup sub-tab" class="screenshot">
+<p>Configure the campaign's technical settings:</p>
+<table>
+  <thead><tr><th>Field</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Pixel Id</strong></td><td>The tracking pixel ID associated with this campaign (e.g. 4394)</td></tr>
+    <tr><td><strong>Dimension 1–5</strong></td><td>Custom dimension labels for data segmentation (e.g. Campaign, Line Item, Creative ID)</td></tr>
+  </tbody>
+</table>
+<p>Click <strong>Save</strong> to apply changes.</p>
+
+<h3>Objectives</h3>
+<img src="reaveal_capture/setup.png" alt="Objectives sub-tab" class="screenshot">
+<p>Define campaign goals and targeting parameters:</p>
+<table>
+  <thead><tr><th>Field</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Dates of the campaign</strong></td><td>Start and end dates</td></tr>
+    <tr><td><strong>Targeted language(s)</strong></td><td>Language targeting (dropdown)</td></tr>
+    <tr><td><strong>Tracked categories</strong></td><td>Semos to track (maximum 2)</td></tr>
+    <tr><td><strong>Other categories</strong></td><td>Additional categories of interest</td></tr>
+    <tr><td><strong>Categories to avoid</strong></td><td>Semos to exclude</td></tr>
+    <tr><td><strong>Relevant semantic profiles</strong></td><td>Contextual Personae to target</td></tr>
+    <tr><td><strong>Expected number of impressions</strong></td><td>Target impression volume</td></tr>
+    <tr><td><strong>Expected level of brand safety</strong></td><td>Target % (slider, e.g. 50%)</td></tr>
+    <tr><td><strong>Expected level of sentiment</strong></td><td>Target % (slider)</td></tr>
+    <tr><td><strong>Expected level of reach</strong></td><td>Target % (slider)</td></tr>
+    <tr><td><strong>Sites list</strong></td><td>Upload a file with authorized sites</td></tr>
+  </tbody>
+</table>
+<p>Click <strong>Save</strong> to store objectives.</p>
+
+<!-- 12. Pixels -->
+<h2 id="pixels">12. Pixels</h2>
+<p>Access the Pixels page from the navigation dropdown menu. This page allows you to create and manage tracking pixels.</p>
+
+<h3>Pixel List</h3>
+<img src="reaveal_capture/pixel.png" alt="Pixel list page" class="screenshot">
+<p>The pixel table displays:</p>
+<table>
+  <thead><tr><th>Column</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>ID</strong></td><td>Unique pixel identifier (e.g. 7165, 7132)</td></tr>
+    <tr><td><strong>Name</strong></td><td>Pixel name (e.g. "Coco Xandr", "pixel_Qwarry_DANONE_IFFO_JANAOUT2026")</td></tr>
+    <tr><td><strong>Customer</strong></td><td>Customer/advertiser (e.g. "Qwarry trading desk", "GroupM")</td></tr>
+    <tr><td><strong>Dimensions</strong></td><td>Configured dimensions shown as badges (e.g. <span class="badge">External Campaign ID</span> <span class="badge">External Placement ID</span> <span class="badge">External Creative ID</span>)</td></tr>
+  </tbody>
+</table>
+<p>Use <strong>Search pixels…</strong> to filter. Pagination at the bottom (Rows per page: 5, page navigation).</p>
+
+<h3>Creating a Pixel</h3>
+<p>Click the <strong>+ Add Pixel</strong> button (top right) to open the creation dialog:</p>
+<img src="reaveal_capture/pixelcrea1.png" alt="Add Pixel dialog" class="screenshot" style="max-width:500px;">
+<p>Fill in the following fields:</p>
+<ol>
+  <li><strong>Customer</strong> — Select from dropdown (e.g. Qwarry trading desk, Starcom, Henkel, Celine, Stellantis, Gamned)</li>
+</ol>
+<img src="reaveal_capture/pixelcrea2.png" alt="Customer dropdown" class="screenshot" style="max-width:500px;">
+<ol start="2">
+  <li><strong>Name</strong> — Enter a descriptive name for the pixel</li>
+  <li><strong>Partner</strong> — Select the DSP/partner from dropdown:</li>
+</ol>
+<img src="reaveal_capture/pixelcrea3.png" alt="Partner dropdown" class="screenshot" style="max-width:500px;">
+<p>Available partners include: None, Adloox, Beeswax, CM 360, DV 360, IAB, IndexExchange, and more.</p>
+<ol start="4">
+  <li>Click <strong>Create</strong> to generate the pixel (or <strong>Cancel</strong> to close).</li>
+</ol>
+
+<h3>Viewing a Pixel &amp; Getting the Tag</h3>
+<p>Click on any pixel in the list to view its details:</p>
+<img src="reaveal_capture/pixelcrea4.png" alt="Pixel detail view with tag" class="screenshot" style="max-width:550px;">
+<p>The detail view shows:</p>
+<ul>
+  <li><strong>Pixel name &amp; ID</strong> (e.g. "Coco Xandr #7132") with an <strong>Edit</strong> button</li>
+  <li><strong>Customer</strong> — e.g. Qwarry trading desk</li>
+  <li><strong>Partner</strong> — e.g. Xandr RTDP</li>
+  <li><strong>Dimension 1, 2, 3</strong> — e.g. Campaign, Line Item, Creative ID</li>
+  <li><strong>Tag</strong> — The full pixel URL to implement in your DSP:</li>
+</ul>
+<p><code>https://i.qwarry.com/imp?id=7132&amp;pl=xandr&amp;sh=f3ab2&amp;im=${AUCTION_ID}&amp;rf=${REFERER_URL_ENC}&amp;d1=${IO_ID}&amp;d2=${CPG_ID}&amp;d3=${CREATIVE_ID}</code></p>
+<p>Click the <strong>copy button</strong> (📋) next to the tag to copy it to your clipboard, then paste it into your DSP platform's tracking settings.</p>
+<div class="note">
+  <strong>Tag structure:</strong> The tag URL includes the pixel ID, platform identifier, a security hash, and macros for the auction ID, referer URL, and dimension values that are automatically replaced by the DSP at serve time.
+</div>
+
+<!-- 13. Glossary -->
+<h2 id="glossary">13. Glossary</h2>
+<img src="reaveal_capture/glossary.png" alt="Glossary page" class="screenshot">
+<p>Access the Glossary from the navigation dropdown. It provides a searchable table of all key terms:</p>
+<table>
+  <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Brand Safety</strong></td><td>Impressions served on URLs considered brand safe according to Qwarry's technology</td></tr>
+    <tr><td><strong>Brand Suitability</strong></td><td>Impressions served on URLs considered brand suitable. Combines brand safety categories along with page sentiment</td></tr>
+    <tr><td><strong>Semos</strong></td><td>Semantic categories by Qwarry</td></tr>
+    <tr><td><strong>Contextual Personae</strong></td><td>Semantic profiles enriched with age and gender derived from individual anonymized Mediametrie Global Internet Measurement data</td></tr>
+    <tr><td><strong>Scored Impressions</strong></td><td>Impressions delivered in URLs analyzed and categorized by Qwarry's technology</td></tr>
+  </tbody>
+</table>
+<p>The glossary also includes detailed descriptions of each Contextual Persona (Ecologist, Fashion Lover, Junk Food Lover, Gastronomist, Healthy Lifestyle, Tech Lover, etc.).</p>
+
+<!-- 14. Troubleshooting -->
+<h2 id="troubleshooting">14. Troubleshooting</h2>
+<table>
+  <thead><tr><th>Issue</th><th>Solution</th></tr></thead>
+  <tbody>
+    <tr><td>"Bad credentials"</td><td>Verify your email and password. Use "Forgot password?" if needed.</td></tr>
+    <tr><td>"Campaign not found"</td><td>Contact your account manager to verify campaign access.</td></tr>
+    <tr><td>"No data found for the selected period"</td><td>Adjust the date range or verify the campaign dates in Setup.</td></tr>
+    <tr><td>"Network error"</td><td>Check your internet connection and try again.</td></tr>
+    <tr><td>Scored % shows 0%</td><td>The pixel may not be receiving data yet. Verify the tag is correctly implemented in your DSP.</td></tr>
+  </tbody>
+</table>
+
+<hr style="margin-top:3rem;border:none;border-top:1px solid var(--border);">
+<p style="color:var(--muted);font-size:0.85rem;margin-top:1rem;"><em>Last updated: May 2026</em></p>
+</main>
+</body>
+</html>
