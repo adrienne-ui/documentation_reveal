@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qwarry Contextual Audiences — User Guide</title>
+  <style>
+    :root{--primary:#1b2a4a;--accent:#3b82f6;--light:#f0f4ff;--text:#2d2d2d;--muted:#666;--border:#e0e0e0;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text);line-height:1.7;}
+    a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
+    .sidebar{position:fixed;top:0;left:0;width:280px;height:100vh;background:var(--primary);color:#fff;padding:2rem 1.5rem;overflow-y:auto;}
+    .sidebar h2{font-size:1.1rem;margin-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:1rem;}
+    .sidebar ul{list-style:none;}.sidebar li{margin-bottom:0.4rem;}
+    .sidebar a{color:rgba(255,255,255,0.85);font-size:0.85rem;display:block;padding:0.3rem 0.5rem;border-radius:4px;}
+    .sidebar a:hover{background:rgba(255,255,255,0.1);color:#fff;text-decoration:none;}
+    .content{margin-left:280px;padding:3rem 4rem;max-width:920px;}
+    h1{font-size:2rem;color:var(--primary);margin-bottom:0.5rem;}
+    h2{font-size:1.5rem;color:var(--primary);margin-top:3rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--light);}
+    h3{font-size:1.15rem;margin-top:2rem;margin-bottom:0.5rem;}
+    p,li{margin-bottom:0.6rem;}ul,ol{padding-left:1.5rem;}
+    .subtitle{color:var(--muted);font-size:0.95rem;margin-bottom:2rem;}
+    table{width:100%;border-collapse:collapse;margin:1rem 0 1.5rem;font-size:0.9rem;}
+    th{background:var(--light);color:var(--primary);text-align:left;padding:0.6rem 0.8rem;}
+    td{padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);}
+    tr:hover td{background:#fafafa;}
+    .note{background:#eef6ff;border-left:4px solid var(--accent);padding:1rem 1.2rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem;}
+    .warn{background:#fff8e1;border-left:4px solid #f59e0b;padding:1rem 1.2rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem;}
+    .step-box{background:var(--light);border-radius:8px;padding:1.5rem;margin:1rem 0;}
+    .step-box h4{color:var(--accent);margin-bottom:0.5rem;font-size:1rem;}
+    .vs-table{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0;}
+    .vs-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1.2rem;}
+    .vs-card h4{color:var(--primary);margin-bottom:0.8rem;font-size:1rem;border-bottom:2px solid var(--accent);padding-bottom:0.4rem;}
+    .flow{display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin:1rem 0;}
+    .flow-step{background:var(--light);border:1px solid var(--border);border-radius:6px;padding:0.6rem 1rem;font-size:0.85rem;font-weight:600;}
+    .flow-arrow{font-size:1.2rem;color:var(--accent);}
+    @media(max-width:768px){.sidebar{position:static;width:100%;height:auto;}.content{margin-left:0;padding:2rem 1.5rem;}.vs-table{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<nav class="sidebar">
+  <h2>Contextual Audiences<br>User Guide</h2>
+  <ul>
+    <li><a href="#what">1. What are Contextual Audiences?</a></li>
+    <li><a href="#vs">2. Audiences vs Categories</a></li>
+    <li><a href="#how">3. How They Are Created</a></li>
+    <li><a href="#composition">4. Composition</a></li>
+    <li><a href="#targeting">5. Targeting &amp; Context</a></li>
+    <li><a href="#cross-device">6. Cross-Device &amp; Identity Graph</a></li>
+    <li><a href="#request">7. Requesting an Audience</a></li>
+    <li><a href="#best-practices">8. Best Practices</a></li>
+    <li><a href="#catalogue">9. Product Catalogue</a></li>
+  </ul>
+</nav>
+
+<main class="content">
+<h1>Qwarry Contextual Audiences</h1>
+<p class="subtitle">User Guide — How it works, what it targets, and what it's composed of</p>
+
+<!-- 1. What -->
+<h2 id="what">1. What are Contextual Audiences?</h2>
+<p>Contextual Audiences are <strong>groups of users (IDs)</strong> who have visited web pages whose content has been semantically analyzed and categorized by Qwarry's technology. Unlike traditional cookie-based audiences, they are built from the <strong>context of the content consumed</strong>, not from personal data.</p>
+<p>In simple terms: if a user visits pages about cooking, gardening, and healthy eating, they become part of contextual audiences related to those topics — without any personal data collection.</p>
+<div class="note">
+  <strong>Key principle:</strong> A Contextual Audience is made up of <strong>people (IDs)</strong> that have visited URLs categorized by Qwarry. These IDs browse the internet and can appear on many different types of content — they are not limited to themed sites.
+</div>
+
+<!-- 2. Audiences vs Categories -->
+<h2 id="vs">2. Contextual Audiences vs Contextual Categories</h2>
+<p>These are two distinct products that serve different purposes:</p>
+<div class="vs-table">
+  <div class="vs-card">
+    <h4>Contextual Audiences</h4>
+    <ul>
+      <li><strong>Made up of:</strong> People (IDs) that have visited a URL categorized by Qwarry</li>
+      <li><strong>What you target:</strong> A user who showed interest in a topic</li>
+      <li><strong>Behavior:</strong> IDs browse the internet and can appear on any type of content</li>
+      <li><strong>Sitelist:</strong> <strong>Not recommended</strong> — using a sitelist limits the chances of reaching the user again</li>
+    </ul>
+  </div>
+  <div class="vs-card">
+    <h4>Contextual Categories</h4>
+    <ul>
+      <li><strong>Made up of:</strong> URLs that Qwarry's technology has categorized</li>
+      <li><strong>What you target:</strong> A page that talks about a specific topic</li>
+      <li><strong>Behavior:</strong> A list of URLs about the targeted topic</li>
+      <li><strong>Sitelist:</strong> <strong>OK</strong> — can be combined with themed sitelists</li>
+    </ul>
+  </div>
+</div>
+<div class="warn">
+  <strong>Important:</strong> Do not use a themed sitelist with Contextual Audiences. Since you are targeting a <em>user</em> who showed interest (not a page), restricting to specific sites dramatically reduces your reach.
+</div>
+
+<!-- 3. How They Are Created -->
+<h2 id="how">3. How Contextual Audiences Are Created</h2>
+<p>The creation process follows 5 steps:</p>
+
+<div class="step-box">
+  <h4>Step 1 — Xandr Sends Data</h4>
+  <p>Xandr provides Qwarry with <strong>URLs</strong> and the <strong>IDs of users who visited those URLs</strong>.</p>
+</div>
+
+<div class="step-box">
+  <h4>Step 2 — Content Analysis</h4>
+  <p>Qwarry's technology analyzes the URLs to:</p>
+  <ul>
+    <li><strong>Identify the content</strong> — Semantic analysis of the page text (crawling, extracting, scoring)</li>
+    <li><strong>Construct Semos</strong> — Assign semantic categories (e.g. Agriculture, Food &amp; Drink, Medical Health)</li>
+  </ul>
+  <p>A <strong>URL Selector</strong> tool prioritizes which URLs to score first based on:</p>
+  <ul>
+    <li><strong>Cross-partner intelligence</strong> — URLs requested by multiple partners are prioritized</li>
+    <li><strong>Domain authority</strong> — Pre-classified high-priority websites bypass the queue</li>
+    <li><strong>Freshness</strong> — URLs less than 72 hours old are processed first</li>
+    <li><strong>Brand safety filtering</strong> — Obvious toxic content is rejected before scoring</li>
+  </ul>
+</div>
+
+<div class="step-box">
+  <h4>Step 3 — Audience Construction</h4>
+  <p>The categorized <strong>URLs</strong> are matched with the <strong>IDs</strong> that visited them, creating the Contextual Audience:</p>
+  <p style="font-size:1.1rem;text-align:center;margin:0.5rem 0;"><strong>URLs (categorized) + IDs (visitors) = Contextual Audience</strong></p>
+  <div class="note">
+    <strong>Recency limit:</strong> Data is retained for 90 days for storage and cost reasons. Audiences cannot be calculated with a recency greater than 90 days.
+  </div>
+</div>
+
+<div class="step-box">
+  <h4>Step 4 — Sending to Xandr</h4>
+  <p>The constructed Contextual Audience (containing IDs) is sent back to Xandr for activation in campaigns.</p>
+</div>
+
+<div class="step-box">
+  <h4>Step 5 — Cross-Device Matching</h4>
+  <p>Using the <strong>cross-device targeting feature</strong>, web IDs are matched to other environments via Microsoft's Identity Graph:</p>
+  <ul>
+    <li>Apps</li>
+    <li>Audio</li>
+    <li>CTV (Connected TV)</li>
+  </ul>
+</div>
+
+<h3>Visual Flow</h3>
+<div class="flow">
+  <span class="flow-step">Xandr sends URLs + IDs</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">Qwarry analyzes content</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">Semos assigned</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">URLs + IDs = Audience</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">Sent to Xandr</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">Cross-device matching</span>
+</div>
+
+<!-- 4. Composition -->
+<h2 id="composition">4. What is a Contextual Audience Composed Of?</h2>
+<p>Each Contextual Audience is defined by the following parameters:</p>
+<table>
+  <thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Name</strong></td><td>Descriptive name of the audience</td></tr>
+    <tr><td><strong>Segments</strong></td><td>The Semos (semantic categories) associated to the audience. One audience can combine multiple segments (from 1 to 100+).</td></tr>
+    <tr><td><strong>Frequency</strong></td><td>How often a user must have visited relevant content to qualify (e.g. 1, 3, 5, 10, 15, 20 visits)</td></tr>
+    <tr><td><strong>Recency</strong></td><td>How recently the user must have visited (e.g. 1 day, 7 days, 30 days, 60 days — max 90 days)</td></tr>
+    <tr><td><strong>Country</strong></td><td>Geographic scope — can be single or multi-country (e.g. FR, DE, ES, GB, CA, IT, CH, etc.)</td></tr>
+  </tbody>
+</table>
+
+<h3>Audience Types</h3>
+<p>There are currently <strong>254 active Contextual Audiences</strong> on the platform, organized in two main types:</p>
+
+<h4>1. Standard Audiences (by Semo category)</h4>
+<p>Generic audiences based on broad semantic categories, available in FR, DE, ES:</p>
+<table>
+  <thead><tr><th>Audience</th><th>Segments</th></tr></thead>
+  <tbody>
+    <tr><td>Automotive</td><td>26</td></tr>
+    <tr><td>Books and Literature</td><td>5</td></tr>
+    <tr><td>Business and Finance</td><td>42</td></tr>
+    <tr><td>Careers</td><td>4</td></tr>
+    <tr><td>Education</td><td>5</td></tr>
+    <tr><td>Events and Attractions</td><td>19</td></tr>
+    <tr><td>Family and Relationships</td><td>13</td></tr>
+    <tr><td>Fine Art</td><td>7</td></tr>
+    <tr><td>Food &amp; Drink</td><td>10</td></tr>
+    <tr><td>Healthy Living</td><td>10</td></tr>
+    <tr><td>Hobbies &amp; Interests</td><td>8</td></tr>
+    <tr><td>Home &amp; Garden</td><td>6</td></tr>
+    <tr><td>Medical Health</td><td>25</td></tr>
+    <tr><td>Movies</td><td>12</td></tr>
+    <tr><td>Music and Audio</td><td>21</td></tr>
+    <tr><td>News and Politics</td><td>3</td></tr>
+    <tr><td>Personal Finance</td><td>17</td></tr>
+    <tr><td>Pets</td><td>6</td></tr>
+    <tr><td>Pop Culture</td><td>4</td></tr>
+    <tr><td>Real Estate</td><td>9</td></tr>
+    <tr><td>Science</td><td>7</td></tr>
+    <tr><td>Shopping</td><td>3</td></tr>
+    <tr><td>Sports</td><td>23</td></tr>
+    <tr><td>Style &amp; Fashion</td><td>28</td></tr>
+    <tr><td>Technology &amp; Computing</td><td>32</td></tr>
+    <tr><td>Television</td><td>7</td></tr>
+    <tr><td>Travel</td><td>1</td></tr>
+    <tr><td>Video Gaming</td><td>5</td></tr>
+  </tbody>
+</table>
+
+<h4>2. Contextual Personae Reach Audiences</h4>
+<p>Audiences based on Qwarry's Contextual Personae profiles (FR, DE, ES):</p>
+<ul style="column-count:2;">
+  <li>Active Retirees Reach</li>
+  <li>Adventure &amp; Adrenaline Lover Reach</li>
+  <li>Animal Lover Reach</li>
+  <li>Auto Seeker Reach</li>
+  <li>Beauty Addict Reach</li>
+  <li>Car Enthusiast Reach</li>
+  <li>Cinephile Reach</li>
+  <li>Cooking Enthusiast Reach</li>
+  <li>Ecologist Reach</li>
+  <li>Fashion Addict Reach</li>
+  <li>Future Parents Reach</li>
+  <li>Gastronomist Reach</li>
+  <li>Healthy Lifestyle Reach</li>
+  <li>Home Decoration / DIY Reach</li>
+  <li>Junk Food Lover Reach</li>
+  <li>Local Products Lover Reach</li>
+  <li>Luxe Lover Reach</li>
+  <li>Party Lover Reach</li>
+  <li>Promophile Reach</li>
+  <li>Tech Lover Reach</li>
+  <li>The Businessman/woman Reach</li>
+  <li>The Digital Mum Reach</li>
+  <li>The E-Shopper Reach</li>
+  <li>The Gamer Reach</li>
+  <li>The Health Freak Reach</li>
+  <li>The Mover Reach</li>
+  <li>The Parent Reach</li>
+  <li>The Sporty Reach</li>
+  <li>The Volunteer Reach</li>
+  <li>Travel Lover Reach</li>
+</ul>
+
+<h4>3. Custom Audiences (client-specific)</h4>
+<p>Tailored audiences built for specific campaigns with custom frequency/recency parameters. Examples:</p>
+<table>
+  <thead><tr><th>Audience</th><th>Countries</th><th>Segments</th><th>Frequency</th><th>Recency</th></tr></thead>
+  <tbody>
+    <tr><td>IKEA COOKING</td><td>FR</td><td>112</td><td>3</td><td>7 days</td></tr>
+    <tr><td>TOYOTA YARIS CROSS</td><td>FR</td><td>12</td><td>12</td><td>60 days</td></tr>
+    <tr><td>DENTSU GENERAL MOTORS CSP++</td><td>FR, GB, ES, DE, CA</td><td>21</td><td>5</td><td>60 days</td></tr>
+    <tr><td>Nestlé Dog Lovers F15</td><td>FR</td><td>1</td><td>15</td><td>30 days</td></tr>
+    <tr><td>H&amp;M HOLIDAYS</td><td>FR</td><td>40</td><td>3</td><td>7 days</td></tr>
+  </tbody>
+</table>
+<div class="note">
+  <strong>Frequency &amp; Recency tuning:</strong> Higher frequency means more engaged users (smaller but more qualified audience). Shorter recency means more recent interest (fresher intent). These parameters are adjusted per campaign objectives.
+</div>
+
+<h3>Available Countries</h3>
+<p>Contextual Audiences are currently available in: <strong>France (FR), Germany (DE), Spain (ES), United Kingdom (GB), Canada (CA), Italy (IT), Switzerland (CH), Austria (AT), Brazil (BR), United States (US), Mexico (MX), Argentina (AR), Vietnam (VN)</strong>.</p>
+
+<!-- 5. Targeting & Context -->
+<h2 id="targeting">5. Targeting &amp; Context</h2>
+<h3>What You're Targeting</h3>
+<p>With Contextual Audiences, you target <strong>a person who has demonstrated interest</strong> in a topic through their browsing behavior. This is fundamentally different from contextual categories where you target a page.</p>
+
+<h3>The Context</h3>
+<p>The "context" comes from Qwarry's semantic analysis of web pages. The technology reads and understands the content of URLs to assign them to categories (Semos). Examples of Semos include:</p>
+<ul>
+  <li>Agriculture, Food &amp; Drink, Medical Health, Home &amp; Garden</li>
+  <li>Business and Finance, Family and Relationships, Pop Culture</li>
+  <li>Healthy Living, Personal Finance, Television</li>
+</ul>
+
+<h3>How Targeting Works in Practice</h3>
+<ol>
+  <li>A user visits pages about "organic gardening" and "sustainable living"</li>
+  <li>Qwarry categorizes those pages under relevant Semos</li>
+  <li>The user's ID is added to the corresponding Contextual Audience (e.g. "Ecologist")</li>
+  <li>When that user later browses <em>any</em> website (news, sports, entertainment...), your ad can reach them</li>
+</ol>
+<div class="note">
+  <strong>Key advantage:</strong> You reach users based on their proven interests, regardless of what page they are currently on. This provides much broader reach than contextual category targeting while maintaining relevance.
+</div>
+
+<!-- 6. Cross-Device -->
+<h2 id="cross-device">6. Cross-Device &amp; Microsoft Identity Graph</h2>
+<p>The <strong>Microsoft Identity Graph</strong> is a database that connects and unifies user identifiers across multiple devices, platforms, and touchpoints, creating a holistic view of an individual or household.</p>
+
+<h3>How It Works</h3>
+<p>On Xandr, the cross-device capability enhances targeting and attribution using information from the identity graph:</p>
+<table>
+  <thead><tr><th>Data Inputs</th><th>Capabilities</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong>1st party data:</strong> Xandr IDs, emails, device IDs, IPs<br>
+        <strong>3rd party data:</strong> Industry-leading graph providers &amp; Universal IDs
+      </td>
+      <td>
+        <strong>Unified capping</strong> across devices<br>
+        <strong>Measurement:</strong> Incremental reach, Attribution
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Environments Reached</h3>
+<p>A Contextual Audience built from web browsing data can be extended to:</p>
+<ul>
+  <li><strong>Desktop</strong> — Standard web browsing</li>
+  <li><strong>Mobile</strong> — Mobile web and apps</li>
+  <li><strong>Tablet</strong> — Tablet browsing</li>
+  <li><strong>CTV</strong> — Connected TV</li>
+  <li><strong>Audio</strong> — Streaming audio platforms</li>
+  <li><strong>Apps</strong> — Mobile applications</li>
+</ul>
+
+<!-- 7. Request Process -->
+<h2 id="request">7. Requesting a New Contextual Audience</h2>
+<p>To request the creation of a new Contextual Audience:</p>
+<ol>
+  <li>Create a new task using the request form</li>
+  <li>Fill in the following information:
+    <table>
+      <thead><tr><th>Field</th><th>What to provide</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Name of the audience</strong></td><td>Descriptive name</td></tr>
+        <tr><td><strong>Segments associated</strong></td><td>Which Semos to include</td></tr>
+        <tr><td><strong>Frequency</strong></td><td>Minimum visit frequency</td></tr>
+        <tr><td><strong>Recency</strong></td><td>Time window (max 90 days)</td></tr>
+        <tr><td><strong>Country</strong></td><td>Target country</td></tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Assign the task to the tech team</li>
+  <li>The tech team creates the audience and sends it to Xandr</li>
+</ol>
+
+<!-- 8. Best Practices -->
+<h2 id="best-practices">8. Best Practices</h2>
+<table>
+  <thead><tr><th>Do</th><th>Don't</th></tr></thead>
+  <tbody>
+    <tr><td>Let the audience run on open inventory for maximum reach</td><td>Use a themed sitelist with Contextual Audiences</td></tr>
+    <tr><td>Combine multiple Semos for a richer audience profile</td><td>Set recency beyond 90 days</td></tr>
+    <tr><td>Enable cross-device targeting to extend reach to CTV/Audio/Apps</td><td>Confuse Contextual Audiences with Contextual Categories</td></tr>
+    <tr><td>Use frequency parameters to qualify engaged users</td><td>Expect the audience to only appear on topic-related sites</td></tr>
+  </tbody>
+</table>
+
+<!-- 9. Product Catalogue -->
+<h2 id="catalogue">9. Qwarry Product Catalogue</h2>
+<p>Contextual Audiences are part of Qwarry's broader product suite:</p>
+<table>
+  <thead><tr><th>Product</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Semos</strong></td><td>Semantic categories — contextual targeting at the page level</td></tr>
+    <tr><td><strong>Semos+</strong></td><td>Enhanced semantic categories</td></tr>
+    <tr><td><strong>Contextual Audiences</strong></td><td>User-level targeting based on content consumption</td></tr>
+    <tr><td><strong>Reveal</strong></td><td>Campaign analytics and reporting platform</td></tr>
+    <tr><td><strong>YouTube by Qwarry</strong></td><td>YouTube contextual targeting solution</td></tr>
+  </tbody>
+</table>
+
+<h3>What's Next</h3>
+<ul>
+  <li><strong>Platform to create audiences</strong> — Self-service audience creation tool</li>
+  <li><strong>Audiences with First IDs</strong> — Integration with first-party identifiers</li>
+  <li><strong>Sending audiences to other SSPs</strong> — Starting with Equativ</li>
+  <li><strong>Automatic reports on audience size</strong> — Automated sizing reports</li>
+</ul>
+
+<hr style="margin-top:3rem;border:none;border-top:1px solid var(--border);">
+<p style="color:var(--muted);font-size:0.85rem;margin-top:1rem;"><em>Last updated: May 2026</em></p>
+</main>
+</body>
+</html>
