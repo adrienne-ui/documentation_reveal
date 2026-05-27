@@ -3,377 +3,393 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Qwarry Contextual Audiences — User Guide</title>
+  <title>Qwarry Reveal — User Guide</title>
   <style>
-    :root{--primary:#1b2a4a;--accent:#3b82f6;--light:#f0f4ff;--text:#2d2d2d;--muted:#666;--border:#e0e0e0;}
+    :root{--primary:#6c3baa;--primary-light:#f3eefa;--text:#2d2d2d;--muted:#666;--border:#e0e0e0;}
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text);line-height:1.7;}
-    a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
-    .sidebar{position:fixed;top:0;left:0;width:280px;height:100vh;background:var(--primary);color:#fff;padding:2rem 1.5rem;overflow-y:auto;}
+    a{color:var(--primary);text-decoration:none;}a:hover{text-decoration:underline;}
+    .sidebar{position:fixed;top:0;left:0;width:280px;height:100vh;background:#1b2a4a;color:#fff;padding:2rem 1.5rem;overflow-y:auto;}
     .sidebar h2{font-size:1.1rem;margin-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:1rem;}
     .sidebar ul{list-style:none;}.sidebar li{margin-bottom:0.4rem;}
     .sidebar a{color:rgba(255,255,255,0.85);font-size:0.85rem;display:block;padding:0.3rem 0.5rem;border-radius:4px;}
     .sidebar a:hover{background:rgba(255,255,255,0.1);color:#fff;text-decoration:none;}
     .content{margin-left:280px;padding:3rem 4rem;max-width:920px;}
-    h1{font-size:2rem;color:var(--primary);margin-bottom:0.5rem;}
-    h2{font-size:1.5rem;color:var(--primary);margin-top:3rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--light);}
+    h1{font-size:2rem;color:#1b2a4a;margin-bottom:0.5rem;}
+    h2{font-size:1.5rem;color:#1b2a4a;margin-top:3rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--primary-light);}
     h3{font-size:1.15rem;margin-top:2rem;margin-bottom:0.5rem;}
     p,li{margin-bottom:0.6rem;}ul,ol{padding-left:1.5rem;}
     .subtitle{color:var(--muted);font-size:0.95rem;margin-bottom:2rem;}
     table{width:100%;border-collapse:collapse;margin:1rem 0 1.5rem;font-size:0.9rem;}
-    th{background:var(--light);color:var(--primary);text-align:left;padding:0.6rem 0.8rem;}
+    th{background:var(--primary-light);color:var(--primary);text-align:left;padding:0.6rem 0.8rem;}
     td{padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);}
     tr:hover td{background:#fafafa;}
-    .note{background:#eef6ff;border-left:4px solid var(--accent);padding:1rem 1.2rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem;}
-    .warn{background:#fff8e1;border-left:4px solid #f59e0b;padding:1rem 1.2rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem;}
-    .step-box{background:var(--light);border-radius:8px;padding:1.5rem;margin:1rem 0;}
-    .step-box h4{color:var(--accent);margin-bottom:0.5rem;font-size:1rem;}
-    .vs-table{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0;}
-    .vs-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1.2rem;}
-    .vs-card h4{color:var(--primary);margin-bottom:0.8rem;font-size:1rem;border-bottom:2px solid var(--accent);padding-bottom:0.4rem;}
-    .flow{display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin:1rem 0;}
-    .flow-step{background:var(--light);border:1px solid var(--border);border-radius:6px;padding:0.6rem 1rem;font-size:0.85rem;font-weight:600;}
-    .flow-arrow{font-size:1.2rem;color:var(--accent);}
-    @media(max-width:768px){.sidebar{position:static;width:100%;height:auto;}.content{margin-left:0;padding:2rem 1.5rem;}.vs-table{grid-template-columns:1fr;}}
+    .note{background:#eef6ff;border-left:4px solid #3b82f6;padding:1rem 1.2rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem;}
+    code{background:#f4f4f4;padding:0.15rem 0.4rem;border-radius:3px;font-size:0.85rem;}
+    img.screenshot{max-width:100%;border:1px solid var(--border);border-radius:6px;margin:0.5rem 0 1rem;display:block;}
+    .badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600;background:#e8eaf6;color:#3949ab;margin:0.1rem;}
+    @media(max-width:768px){.sidebar{position:static;width:100%;height:auto;}.content{margin-left:0;padding:2rem 1.5rem;}}
   </style>
 </head>
 <body>
 <nav class="sidebar">
-  <h2>Contextual Audiences<br>User Guide</h2>
+  <h2>Reveal by Qwarry<br>User Guide</h2>
   <ul>
-    <li><a href="#what">1. What are Contextual Audiences?</a></li>
-    <li><a href="#vs">2. Audiences vs Categories</a></li>
-    <li><a href="#how">3. How They Are Created</a></li>
-    <li><a href="#composition">4. Composition</a></li>
-    <li><a href="#targeting">5. Targeting &amp; Context</a></li>
-    <li><a href="#cross-device">6. Cross-Device &amp; Identity Graph</a></li>
-    <li><a href="#request">7. Requesting an Audience</a></li>
-    <li><a href="#best-practices">8. Best Practices</a></li>
-    <li><a href="#catalogue">9. Product Catalogue</a></li>
+    <li><a href="#introduction">1. Introduction</a></li>
+    <li><a href="#getting-started">2. Getting Started</a></li>
+    <li><a href="#navigation">3. Navigation</a></li>
+    <li><a href="#campaigns">4. Campaign List</a></li>
+    <li><a href="#overview">5. Overview Tab</a></li>
+    <li><a href="#domains">6. Domains Tab</a></li>
+    <li><a href="#semos">7. Semos Tab</a></li>
+    <li><a href="#personae">8. Contextual Personae Tab</a></li>
+    <li><a href="#safety">9. Brand Safety &amp; Sentiment</a></li>
+    <li><a href="#reports">10. Reports</a></li>
+    <li><a href="#setup">11. Setup &amp; Objectives</a></li>
+    <li><a href="#pixels">12. Pixels</a></li>
+    <li><a href="#glossary">13. Glossary</a></li>
+    <li><a href="#troubleshooting">14. Troubleshooting</a></li>
   </ul>
 </nav>
-
 <main class="content">
-<h1>Qwarry Contextual Audiences</h1>
-<p class="subtitle">User Guide — How it works, what it targets, and what it's composed of</p>
+<h1>Reveal by Qwarry — User Guide</h1>
+<p class="subtitle">URL: <a href="https://reveal.qwarry.com/">https://reveal.qwarry.com/</a> · Languages: English, French · Last updated: May 2026</p>
 
-<!-- 1. What -->
-<h2 id="what">1. What are Contextual Audiences?</h2>
-<p>Contextual Audiences are <strong>groups of users (IDs)</strong> who have visited web pages whose content has been semantically analyzed and categorized by Qwarry's technology. Unlike traditional cookie-based audiences, they are built from the <strong>context of the content consumed</strong>, not from personal data.</p>
-<p>In simple terms: if a user visits pages about cooking, gardening, and healthy eating, they become part of contextual audiences related to those topics — without any personal data collection.</p>
-<div class="note">
-  <strong>Key principle:</strong> A Contextual Audience is made up of <strong>people (IDs)</strong> that have visited URLs categorized by Qwarry. These IDs browse the internet and can appear on many different types of content — they are not limited to themed sites.
-</div>
-
-<!-- 2. Audiences vs Categories -->
-<h2 id="vs">2. Contextual Audiences vs Contextual Categories</h2>
-<p>These are two distinct products that serve different purposes:</p>
-<div class="vs-table">
-  <div class="vs-card">
-    <h4>Contextual Audiences</h4>
-    <ul>
-      <li><strong>Made up of:</strong> People (IDs) that have visited a URL categorized by Qwarry</li>
-      <li><strong>What you target:</strong> A user who showed interest in a topic</li>
-      <li><strong>Behavior:</strong> IDs browse the internet and can appear on any type of content</li>
-      <li><strong>Sitelist:</strong> <strong>Not recommended</strong> — using a sitelist limits the chances of reaching the user again</li>
-    </ul>
-  </div>
-  <div class="vs-card">
-    <h4>Contextual Categories</h4>
-    <ul>
-      <li><strong>Made up of:</strong> URLs that Qwarry's technology has categorized</li>
-      <li><strong>What you target:</strong> A page that talks about a specific topic</li>
-      <li><strong>Behavior:</strong> A list of URLs about the targeted topic</li>
-      <li><strong>Sitelist:</strong> <strong>OK</strong> — can be combined with themed sitelists</li>
-    </ul>
-  </div>
-</div>
-<div class="warn">
-  <strong>Important:</strong> Do not use a themed sitelist with Contextual Audiences. Since you are targeting a <em>user</em> who showed interest (not a page), restricting to specific sites dramatically reduces your reach.
-</div>
-
-<!-- 3. How They Are Created -->
-<h2 id="how">3. How Contextual Audiences Are Created</h2>
-<p>The creation process follows 5 steps:</p>
-
-<div class="step-box">
-  <h4>Step 1 — Xandr Sends Data</h4>
-  <p>Xandr provides Qwarry with <strong>URLs</strong> and the <strong>IDs of users who visited those URLs</strong>.</p>
-</div>
-
-<div class="step-box">
-  <h4>Step 2 — Content Analysis</h4>
-  <p>Qwarry's technology analyzes the URLs to:</p>
-  <ul>
-    <li><strong>Identify the content</strong> — Semantic analysis of the page text (crawling, extracting, scoring)</li>
-    <li><strong>Construct Semos</strong> — Assign semantic categories (e.g. Agriculture, Food &amp; Drink, Medical Health)</li>
-  </ul>
-  <p>A <strong>URL Selector</strong> tool prioritizes which URLs to score first based on:</p>
-  <ul>
-    <li><strong>Cross-partner intelligence</strong> — URLs requested by multiple partners are prioritized</li>
-    <li><strong>Domain authority</strong> — Pre-classified high-priority websites bypass the queue</li>
-    <li><strong>Freshness</strong> — URLs less than 72 hours old are processed first</li>
-    <li><strong>Brand safety filtering</strong> — Obvious toxic content is rejected before scoring</li>
-  </ul>
-</div>
-
-<div class="step-box">
-  <h4>Step 3 — Audience Construction</h4>
-  <p>The categorized <strong>URLs</strong> are matched with the <strong>IDs</strong> that visited them, creating the Contextual Audience:</p>
-  <p style="font-size:1.1rem;text-align:center;margin:0.5rem 0;"><strong>URLs (categorized) + IDs (visitors) = Contextual Audience</strong></p>
-  <div class="note">
-    <strong>Recency limit:</strong> Data is retained for 90 days for storage and cost reasons. Audiences cannot be calculated with a recency greater than 90 days.
-  </div>
-</div>
-
-<div class="step-box">
-  <h4>Step 4 — Sending to Xandr</h4>
-  <p>The constructed Contextual Audience (containing IDs) is sent back to Xandr for activation in campaigns.</p>
-</div>
-
-<div class="step-box">
-  <h4>Step 5 — Cross-Device Matching</h4>
-  <p>Using the <strong>cross-device targeting feature</strong>, web IDs are matched to other environments via Microsoft's Identity Graph:</p>
-  <ul>
-    <li>Apps</li>
-    <li>Audio</li>
-    <li>CTV (Connected TV)</li>
-  </ul>
-</div>
-
-<h3>Visual Flow</h3>
-<div class="flow">
-  <span class="flow-step">Xandr sends URLs + IDs</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">Qwarry analyzes content</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">Semos assigned</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">URLs + IDs = Audience</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">Sent to Xandr</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">Cross-device matching</span>
-</div>
-
-<!-- 4. Composition -->
-<h2 id="composition">4. What is a Contextual Audience Composed Of?</h2>
-<p>Each Contextual Audience is defined by the following parameters:</p>
-<table>
-  <thead><tr><th>Parameter</th><th>Description</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Name</strong></td><td>Descriptive name of the audience</td></tr>
-    <tr><td><strong>Segments</strong></td><td>The Semos (semantic categories) associated to the audience. One audience can combine multiple segments (from 1 to 100+).</td></tr>
-    <tr><td><strong>Frequency</strong></td><td>How often a user must have visited relevant content to qualify (e.g. 1, 3, 5, 10, 15, 20 visits)</td></tr>
-    <tr><td><strong>Recency</strong></td><td>How recently the user must have visited (e.g. 1 day, 7 days, 30 days, 60 days — max 90 days)</td></tr>
-    <tr><td><strong>Country</strong></td><td>Geographic scope — can be single or multi-country (e.g. FR, DE, ES, GB, CA, IT, CH, etc.)</td></tr>
-  </tbody>
-</table>
-
-<h3>Audience Types</h3>
-<p>There are currently <strong>254 active Contextual Audiences</strong> on the platform, organized in two main types:</p>
-
-<h4>1. Standard Audiences (by Semo category)</h4>
-<p>Generic audiences based on broad semantic categories, available in FR, DE, ES:</p>
-<table>
-  <thead><tr><th>Audience</th><th>Segments</th></tr></thead>
-  <tbody>
-    <tr><td>Automotive</td><td>26</td></tr>
-    <tr><td>Books and Literature</td><td>5</td></tr>
-    <tr><td>Business and Finance</td><td>42</td></tr>
-    <tr><td>Careers</td><td>4</td></tr>
-    <tr><td>Education</td><td>5</td></tr>
-    <tr><td>Events and Attractions</td><td>19</td></tr>
-    <tr><td>Family and Relationships</td><td>13</td></tr>
-    <tr><td>Fine Art</td><td>7</td></tr>
-    <tr><td>Food &amp; Drink</td><td>10</td></tr>
-    <tr><td>Healthy Living</td><td>10</td></tr>
-    <tr><td>Hobbies &amp; Interests</td><td>8</td></tr>
-    <tr><td>Home &amp; Garden</td><td>6</td></tr>
-    <tr><td>Medical Health</td><td>25</td></tr>
-    <tr><td>Movies</td><td>12</td></tr>
-    <tr><td>Music and Audio</td><td>21</td></tr>
-    <tr><td>News and Politics</td><td>3</td></tr>
-    <tr><td>Personal Finance</td><td>17</td></tr>
-    <tr><td>Pets</td><td>6</td></tr>
-    <tr><td>Pop Culture</td><td>4</td></tr>
-    <tr><td>Real Estate</td><td>9</td></tr>
-    <tr><td>Science</td><td>7</td></tr>
-    <tr><td>Shopping</td><td>3</td></tr>
-    <tr><td>Sports</td><td>23</td></tr>
-    <tr><td>Style &amp; Fashion</td><td>28</td></tr>
-    <tr><td>Technology &amp; Computing</td><td>32</td></tr>
-    <tr><td>Television</td><td>7</td></tr>
-    <tr><td>Travel</td><td>1</td></tr>
-    <tr><td>Video Gaming</td><td>5</td></tr>
-  </tbody>
-</table>
-
-<h4>2. Contextual Personae Reach Audiences</h4>
-<p>Audiences based on Qwarry's Contextual Personae profiles (FR, DE, ES):</p>
-<ul style="column-count:2;">
-  <li>Active Retirees Reach</li>
-  <li>Adventure &amp; Adrenaline Lover Reach</li>
-  <li>Animal Lover Reach</li>
-  <li>Auto Seeker Reach</li>
-  <li>Beauty Addict Reach</li>
-  <li>Car Enthusiast Reach</li>
-  <li>Cinephile Reach</li>
-  <li>Cooking Enthusiast Reach</li>
-  <li>Ecologist Reach</li>
-  <li>Fashion Addict Reach</li>
-  <li>Future Parents Reach</li>
-  <li>Gastronomist Reach</li>
-  <li>Healthy Lifestyle Reach</li>
-  <li>Home Decoration / DIY Reach</li>
-  <li>Junk Food Lover Reach</li>
-  <li>Local Products Lover Reach</li>
-  <li>Luxe Lover Reach</li>
-  <li>Party Lover Reach</li>
-  <li>Promophile Reach</li>
-  <li>Tech Lover Reach</li>
-  <li>The Businessman/woman Reach</li>
-  <li>The Digital Mum Reach</li>
-  <li>The E-Shopper Reach</li>
-  <li>The Gamer Reach</li>
-  <li>The Health Freak Reach</li>
-  <li>The Mover Reach</li>
-  <li>The Parent Reach</li>
-  <li>The Sporty Reach</li>
-  <li>The Volunteer Reach</li>
-  <li>Travel Lover Reach</li>
-</ul>
-
-<h4>3. Custom Audiences (client-specific)</h4>
-<p>Tailored audiences built for specific campaigns with custom frequency/recency parameters. Examples:</p>
-<table>
-  <thead><tr><th>Audience</th><th>Countries</th><th>Segments</th><th>Frequency</th><th>Recency</th></tr></thead>
-  <tbody>
-    <tr><td>IKEA COOKING</td><td>FR</td><td>112</td><td>3</td><td>7 days</td></tr>
-    <tr><td>TOYOTA YARIS CROSS</td><td>FR</td><td>12</td><td>12</td><td>60 days</td></tr>
-    <tr><td>DENTSU GENERAL MOTORS CSP++</td><td>FR, GB, ES, DE, CA</td><td>21</td><td>5</td><td>60 days</td></tr>
-    <tr><td>Nestlé Dog Lovers F15</td><td>FR</td><td>1</td><td>15</td><td>30 days</td></tr>
-    <tr><td>H&amp;M HOLIDAYS</td><td>FR</td><td>40</td><td>3</td><td>7 days</td></tr>
-  </tbody>
-</table>
-<div class="note">
-  <strong>Frequency &amp; Recency tuning:</strong> Higher frequency means more engaged users (smaller but more qualified audience). Shorter recency means more recent interest (fresher intent). These parameters are adjusted per campaign objectives.
-</div>
-
-<h3>Available Countries</h3>
-<p>Contextual Audiences are currently available in: <strong>France (FR), Germany (DE), Spain (ES), United Kingdom (GB), Canada (CA), Italy (IT), Switzerland (CH), Austria (AT), Brazil (BR), United States (US), Mexico (MX), Argentina (AR), Vietnam (VN)</strong>.</p>
-
-<!-- 5. Targeting & Context -->
-<h2 id="targeting">5. Targeting &amp; Context</h2>
-<h3>What You're Targeting</h3>
-<p>With Contextual Audiences, you target <strong>a person who has demonstrated interest</strong> in a topic through their browsing behavior. This is fundamentally different from contextual categories where you target a page.</p>
-
-<h3>The Context</h3>
-<p>The "context" comes from Qwarry's semantic analysis of web pages. The technology reads and understands the content of URLs to assign them to categories (Semos). Examples of Semos include:</p>
+<!-- 1. Introduction -->
+<h2 id="introduction">1. Introduction</h2>
+<p><strong>Reveal by Qwarry</strong> is a campaign analytics platform that provides advertisers and media buyers with deep insights into their digital advertising campaigns. Using Qwarry's proprietary semantic analysis and cookieless targeting technology, Reveal analyzes ad impressions to deliver:</p>
 <ul>
-  <li>Agriculture, Food &amp; Drink, Medical Health, Home &amp; Garden</li>
-  <li>Business and Finance, Family and Relationships, Pop Culture</li>
-  <li>Healthy Living, Personal Finance, Television</li>
+  <li><strong>Brand Safety &amp; Sentiment</strong> scoring</li>
+  <li><strong>Semantic categorization</strong> (Semos) of content where ads are served</li>
+  <li><strong>Contextual Personae</strong> — audience profiling based on content consumption</li>
+  <li><strong>Domain-level analytics</strong> and reporting</li>
+  <li><strong>PPTX report generation</strong> for client presentations</li>
 </ul>
 
-<h3>How Targeting Works in Practice</h3>
+<!-- 2. Getting Started -->
+<h2 id="getting-started">2. Getting Started</h2>
+<h3>Login</h3>
 <ol>
-  <li>A user visits pages about "organic gardening" and "sustainable living"</li>
-  <li>Qwarry categorizes those pages under relevant Semos</li>
-  <li>The user's ID is added to the corresponding Contextual Audience (e.g. "Ecologist")</li>
-  <li>When that user later browses <em>any</em> website (news, sports, entertainment...), your ad can reach them</li>
+  <li>Go to <a href="https://reveal.qwarry.com/login">https://reveal.qwarry.com/login</a></li>
+  <li>Enter your email and password.</li>
+  <li>Click <strong>Login</strong>.</li>
 </ol>
-<div class="note">
-  <strong>Key advantage:</strong> You reach users based on their proven interests, regardless of what page they are currently on. This provides much broader reach than contextual category targeting while maintaining relevance.
-</div>
-
-<!-- 6. Cross-Device -->
-<h2 id="cross-device">6. Cross-Device &amp; Microsoft Identity Graph</h2>
-<p>The <strong>Microsoft Identity Graph</strong> is a database that connects and unifies user identifiers across multiple devices, platforms, and touchpoints, creating a holistic view of an individual or household.</p>
-
-<h3>How It Works</h3>
-<p>On Xandr, the cross-device capability enhances targeting and attribution using information from the identity graph:</p>
-<table>
-  <thead><tr><th>Data Inputs</th><th>Capabilities</th></tr></thead>
-  <tbody>
-    <tr>
-      <td>
-        <strong>1st party data:</strong> Xandr IDs, emails, device IDs, IPs<br>
-        <strong>3rd party data:</strong> Industry-leading graph providers &amp; Universal IDs
-      </td>
-      <td>
-        <strong>Unified capping</strong> across devices<br>
-        <strong>Measurement:</strong> Incremental reach, Attribution
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<h3>Environments Reached</h3>
-<p>A Contextual Audience built from web browsing data can be extended to:</p>
-<ul>
-  <li><strong>Desktop</strong> — Standard web browsing</li>
-  <li><strong>Mobile</strong> — Mobile web and apps</li>
-  <li><strong>Tablet</strong> — Tablet browsing</li>
-  <li><strong>CTV</strong> — Connected TV</li>
-  <li><strong>Audio</strong> — Streaming audio platforms</li>
-  <li><strong>Apps</strong> — Mobile applications</li>
-</ul>
-
-<!-- 7. Request Process -->
-<h2 id="request">7. Requesting a New Contextual Audience</h2>
-<p>To request the creation of a new Contextual Audience:</p>
+<h3>Forgot Password</h3>
 <ol>
-  <li>Create a new task using the request form</li>
-  <li>Fill in the following information:
-    <table>
-      <thead><tr><th>Field</th><th>What to provide</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Name of the audience</strong></td><td>Descriptive name</td></tr>
-        <tr><td><strong>Segments associated</strong></td><td>Which Semos to include</td></tr>
-        <tr><td><strong>Frequency</strong></td><td>Minimum visit frequency</td></tr>
-        <tr><td><strong>Recency</strong></td><td>Time window (max 90 days)</td></tr>
-        <tr><td><strong>Country</strong></td><td>Target country</td></tr>
-      </tbody>
-    </table>
-  </li>
-  <li>Assign the task to the tech team</li>
-  <li>The tech team creates the audience and sends it to Xandr</li>
+  <li>Click <strong>Forgot password?</strong> on the login page.</li>
+  <li>Enter your email address and click <strong>Continue</strong>.</li>
+  <li>Follow the reset link sent to your email.</li>
 </ol>
 
-<!-- 8. Best Practices -->
-<h2 id="best-practices">8. Best Practices</h2>
+<!-- 3. Navigation -->
+<h2 id="navigation">3. Navigation</h2>
+<p>The top-right corner shows your initials. Click on it to open the dropdown menu:</p>
+<img src="reaveal_capture/menu.png" alt="Navigation dropdown menu" class="screenshot" style="max-width:250px;">
 <table>
-  <thead><tr><th>Do</th><th>Don't</th></tr></thead>
+  <thead><tr><th>Menu Item</th><th>Description</th></tr></thead>
   <tbody>
-    <tr><td>Let the audience run on open inventory for maximum reach</td><td>Use a themed sitelist with Contextual Audiences</td></tr>
-    <tr><td>Combine multiple Semos for a richer audience profile</td><td>Set recency beyond 90 days</td></tr>
-    <tr><td>Enable cross-device targeting to extend reach to CTV/Audio/Apps</td><td>Confuse Contextual Audiences with Contextual Categories</td></tr>
-    <tr><td>Use frequency parameters to qualify engaged users</td><td>Expect the audience to only appear on topic-related sites</td></tr>
+    <tr><td><strong>Edit Profile</strong></td><td>Update your personal information</td></tr>
+    <tr><td><strong>Glossary</strong></td><td>Definitions of all key terms</td></tr>
+    <tr><td><strong>Pixels</strong></td><td>Create and manage tracking pixels</td></tr>
+    <tr><td><strong>Users</strong></td><td>User management (admin)</td></tr>
+    <tr><td><strong>FR / GB</strong></td><td>Switch between French and English</td></tr>
+    <tr><td><strong>Log out</strong></td><td>End your session</td></tr>
   </tbody>
 </table>
 
-<!-- 9. Product Catalogue -->
-<h2 id="catalogue">9. Qwarry Product Catalogue</h2>
-<p>Contextual Audiences are part of Qwarry's broader product suite:</p>
-<table>
-  <thead><tr><th>Product</th><th>Description</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Semos</strong></td><td>Semantic categories — contextual targeting at the page level</td></tr>
-    <tr><td><strong>Semos+</strong></td><td>Enhanced semantic categories</td></tr>
-    <tr><td><strong>Contextual Audiences</strong></td><td>User-level targeting based on content consumption</td></tr>
-    <tr><td><strong>Reveal</strong></td><td>Campaign analytics and reporting platform</td></tr>
-    <tr><td><strong>YouTube by Qwarry</strong></td><td>YouTube contextual targeting solution</td></tr>
-  </tbody>
-</table>
-
-<h3>What's Next</h3>
+<!-- 4. Campaign List -->
+<h2 id="campaigns">4. Campaign List</h2>
+<img src="reaveal_capture/acceuil.png" alt="Campaign list home page" class="screenshot">
+<p>The home page displays all campaigns associated with your account. The table shows:</p>
 <ul>
-  <li><strong>Platform to create audiences</strong> — Self-service audience creation tool</li>
-  <li><strong>Audiences with First IDs</strong> — Integration with first-party identifiers</li>
-  <li><strong>Sending audiences to other SSPs</strong> — Starting with Equativ</li>
-  <li><strong>Automatic reports on audience size</strong> — Automated sizing reports</li>
+  <li><strong>Campaign</strong> — Campaign name with its pixel ID (e.g. #5413)</li>
+  <li><strong>Scored Impressions</strong> — Total number of impressions analyzed</li>
+  <li><strong>Scored %</strong> — Percentage of impressions successfully scored (with progress ring)</li>
 </ul>
+<p>Use the <strong>Search</strong> bar to filter campaigns by name. Use the <strong>date picker</strong> (top right) to select the analysis period.</p>
+<p>Click on any campaign to access its detailed analytics.</p>
+
+<!-- 5. Overview Tab -->
+<h2 id="overview">5. Overview Tab</h2>
+<p>After selecting a campaign, you land on the Overview tab. The header shows the campaign name, date range picker, and a <strong>Dimensions</strong> filter button.</p>
+<img src="reaveal_capture/dash1.png" alt="Campaign header with tabs" class="screenshot">
+<p>The tab bar provides access to: <strong>Overview</strong>, <strong>Domains</strong>, <strong>Semos</strong>, <strong>Contextual Personae</strong>, <strong>Brand Safety &amp; Sentiment</strong>, <strong>Reports</strong>, <strong>Setup &amp; Objectives</strong>.</p>
+<p>The top section displays three summary cards:</p>
+<ul>
+  <li><strong>Total URLs</strong> — Number of unique URLs where ads were served</li>
+  <li><strong>Total Domains</strong> — Number of unique domains</li>
+  <li><strong>Top Language</strong> — Most common content language (with percentage)</li>
+</ul>
+
+<h3>KPI Summary &amp; Impressions Chart</h3>
+<img src="reaveal_capture/dash2.png" alt="KPI summary and impressions timeline" class="screenshot">
+<p>Below the cards, four KPIs are displayed:</p>
+<ul>
+  <li><strong>Impressions</strong> — Total impressions (e.g. 44K)</li>
+  <li><strong>Scored Impressions</strong> — Impressions analyzed by Reveal (e.g. 36K)</li>
+  <li><strong>Brand Safety</strong> — Percentage of brand-safe impressions (e.g. 99.47%)</li>
+  <li><strong>Sentiment</strong> — Percentage of positive sentiment</li>
+</ul>
+<p>A timeline chart shows daily impression volume over the selected period.</p>
+
+<h3>Top Domains &amp; Top Languages</h3>
+<img src="reaveal_capture/dash3.png" alt="Top domains and top languages donut charts" class="screenshot">
+<p>Two donut charts display:</p>
+<ul>
+  <li><strong>Top domains</strong> — Distribution of impressions across domains (with favicon, name, and percentage). Click <strong>View all</strong> to see the full list.</li>
+  <li><strong>Top languages</strong> — Language distribution of content.</li>
+</ul>
+
+<h3>Top Semos &amp; Top Contextual Personae</h3>
+<img src="reaveal_capture/dash4.png" alt="Top Semos and Top Contextual Personae bar charts" class="screenshot">
+<p>Two horizontal bar charts show:</p>
+<ul>
+  <li><strong>Top Semos</strong> — Top 5 semantic categories with impression count and percentage</li>
+  <li><strong>Top Contextual Personae</strong> — Top 5 audience profiles with impression count and percentage</li>
+</ul>
+<div class="note">
+  <strong>Note:</strong> The Semos and Contextual Personae data displayed is unique to each campaign and depends on the content of the websites where ads were served during the selected period.
+</div>
+<p>Click <strong>View all</strong> to navigate to the full tab.</p>
+
+<!-- 6. Domains Tab -->
+<h2 id="domains">6. Domains Tab</h2>
+<img src="reaveal_capture/domains.png" alt="Domains tab - domain list table" class="screenshot">
+<p>The Domains tab shows a <strong>Domain list</strong> table with the following features:</p>
+<ul>
+  <li><strong>Filter</strong> — Filter domains by criteria</li>
+  <li><strong>Column Filter</strong> — Choose which columns to display</li>
+  <li><strong>Export</strong> — Export data to CSV (sent by email)</li>
+  <li><strong>Search</strong> — Search for a specific domain</li>
+</ul>
+<p>Table columns include:</p>
+<table>
+  <thead><tr><th>Column</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>Domain</td><td>Domain name with favicon</td></tr>
+    <tr><td>Impressions</td><td>Total impressions on this domain</td></tr>
+    <tr><td>Scored Impressions</td><td>Impressions analyzed by Reveal</td></tr>
+  </tbody>
+</table>
+<p>Additional columns available via Column Filter: % Impressions, % Scored Impressions, Scored %, Top Category, Language, Brand Safety, Brand Suitability, Sentiment.</p>
+<p>Click on any domain to see its detailed breakdown.</p>
+
+<!-- 7. Semos Tab -->
+<h2 id="semos">7. Semos Tab</h2>
+<img src="reaveal_capture/semos1.png" alt="Semos tab - chart and demographics" class="screenshot">
+<p>The Semos tab shows:</p>
+<ul>
+  <li><strong>Scored Impressions</strong> total (e.g. 36K)</li>
+  <li>A <strong>daily bar chart</strong> showing impression distribution across top Semos over time (color-coded by category)</li>
+  <li><strong>Age &amp; Gender</strong> table (Source: Panelists) — Breakdown by age group (18-24, 25-34, 35-50, 50-64, 65+) with Men/Women/Total percentages</li>
+</ul>
+
+<h3>Semos List</h3>
+<img src="reaveal_capture/semos2.png" alt="Semos list table" class="screenshot">
+<p>A paginated table listing all Semos with:</p>
+<ul>
+  <li><strong>Semo</strong> — Category name</li>
+  <li><strong>Scored Impressions</strong> — Number of scored impressions</li>
+  <li><strong>% Scored Impressions</strong> — Percentage of total</li>
+</ul>
+<div class="note">
+  <strong>Note:</strong> The Semos and their values vary per campaign. They reflect the semantic content of the pages where the campaign's ads were actually delivered.
+</div>
+<p>Use <strong>Export</strong> to download or <strong>Search</strong> to filter. Pagination controls at the bottom (Rows per page, Go to page).</p>
+
+<h3>SubSemos List</h3>
+<img src="reaveal_capture/semos3.png" alt="SubSemos list table" class="screenshot">
+<p>A detailed breakdown into subcategories (e.g. Healthy Cooking and Eating, Outdoor Decorating, Cocktails, Vegetarian Diets, Desserts and Baking, etc.) with the same columns.</p>
+
+<!-- 8. Contextual Personae Tab -->
+<h2 id="personae">8. Contextual Personae Tab</h2>
+<img src="reaveal_capture/context1.png" alt="Contextual Personae tab - chart" class="screenshot">
+<p>Similar layout to the Semos tab:</p>
+<ul>
+  <li><strong>Scored Impressions</strong> total</li>
+  <li>A <strong>daily bar chart</strong> showing impression distribution across top Contextual Personae over time</li>
+</ul>
+
+<h3>Contextual Personae List</h3>
+<img src="reaveal_capture/context2.png" alt="Contextual Personae list table" class="screenshot">
+<p>Paginated table with:</p>
+<ul>
+  <li><strong>Contextual Personae</strong> — Profile name</li>
+  <li><strong>Scored Impressions</strong> — Number of impressions</li>
+  <li><strong>% Scored Impressions</strong> — Percentage of total</li>
+</ul>
+<div class="note">
+  <strong>Note:</strong> The Contextual Personae and their distribution are specific to each campaign. They reflect the audience profiles associated with the content where ads were served.
+</div>
+
+<!-- 9. Brand Safety & Sentiment -->
+<h2 id="safety">9. Brand Safety &amp; Sentiment Tab</h2>
+<img src="reaveal_capture/safety.png" alt="Brand Safety & Sentiment tab - chart" class="screenshot">
+<p>The top section shows two KPIs:</p>
+<ul>
+  <li><strong>Non brand safe impressions</strong> — Count of unsafe impressions (e.g. 188)</li>
+  <li><strong>Negative impressions</strong> — Count of negative sentiment impressions (e.g. 34K)</li>
+</ul>
+<p>A daily bar chart shows the distribution of sensitive categories over time: Natural Disasters, Political news, Adult, Religion, Social Issues, Tobacco, and Others.</p>
+
+<h3>Sensitive Semos List</h3>
+<img src="reaveal_capture/safety2.png" alt="Sensitive Semos list" class="screenshot">
+<p>Table listing all sensitive categories detected:</p>
+<table>
+  <thead><tr><th>Sensitive Semo</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td>Natural Disasters</td><td>31.13%</td></tr>
+    <tr><td>Political news</td><td>31.13%</td></tr>
+    <tr><td>Adult</td><td>11.32%</td></tr>
+    <tr><td>Religion</td><td>7.55%</td></tr>
+    <tr><td>Social Issues</td><td>4.72%</td></tr>
+    <tr><td>Tobacco</td><td>4.72%</td></tr>
+    <tr><td>Crime</td><td>3.77%</td></tr>
+    <tr><td>Injuries</td><td>3.77%</td></tr>
+    <tr><td>Hate Speech</td><td>0.94%</td></tr>
+    <tr><td>Violence</td><td>0.94%</td></tr>
+  </tbody>
+</table>
+
+<h3>Risk Domains</h3>
+<img src="reaveal_capture/safety1.png" alt="Risk Domains table" class="screenshot">
+<p>Lists domains flagged as risky with columns: Domain (clickable link), Scored Impressions, Brand Safety, % Sentiment.</p>
+
+<!-- 10. Reports -->
+<h2 id="reports">10. Reports</h2>
+<img src="reaveal_capture/report.png" alt="Report Builder page" class="screenshot">
+<p>The <strong>Report Builder</strong> allows you to generate PowerPoint (PPTX) presentations from your campaign data.</p>
+<p>To generate a report:</p>
+<ol>
+  <li><strong>Report Name</strong> — Enter a name for the report (e.g. "Report CR7")</li>
+  <li><strong>Select Output File</strong> — Choose <strong>PPT</strong> format</li>
+  <li><strong>Date range</strong> — Select the period to cover</li>
+  <li><strong>Select Data</strong> — Choose which sections to include (multi-select): Overview, Domains, Semos, Tribes</li>
+  <li><strong>Select dimension</strong> — Optionally filter by dimension</li>
+  <li>Click <strong>Generate Report</strong></li>
+</ol>
+<div class="note">
+  <strong>Note:</strong> Reports are generated asynchronously as PPTX files. You will receive an email with the download link when the report is ready. The generated presentation includes charts, tables, and key metrics ready to share with clients.
+</div>
+
+<!-- 11. Setup & Objectives -->
+<h2 id="setup">11. Setup &amp; Objectives</h2>
+<p>The Setup &amp; Objectives tab has two sub-tabs: <strong>Setup</strong> and <strong>Objectives</strong>.</p>
+
+<h3>Setup</h3>
+<img src="reaveal_capture/setup1.png" alt="Setup sub-tab" class="screenshot">
+<p>Configure the campaign's technical settings:</p>
+<table>
+  <thead><tr><th>Field</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Pixel Id</strong></td><td>The tracking pixel ID associated with this campaign (e.g. 4394)</td></tr>
+    <tr><td><strong>Dimension 1–5</strong></td><td>Custom dimension labels for data segmentation (e.g. Campaign, Line Item, Creative ID)</td></tr>
+  </tbody>
+</table>
+<p>Click <strong>Save</strong> to apply changes.</p>
+
+<h3>Objectives</h3>
+<img src="reaveal_capture/setup.png" alt="Objectives sub-tab" class="screenshot">
+<p>Define campaign goals and targeting parameters:</p>
+<table>
+  <thead><tr><th>Field</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Dates of the campaign</strong></td><td>Start and end dates</td></tr>
+    <tr><td><strong>Targeted language(s)</strong></td><td>Language targeting (dropdown)</td></tr>
+    <tr><td><strong>Tracked categories</strong></td><td>Semos to track (maximum 2)</td></tr>
+    <tr><td><strong>Other categories</strong></td><td>Additional categories of interest</td></tr>
+    <tr><td><strong>Categories to avoid</strong></td><td>Semos to exclude</td></tr>
+    <tr><td><strong>Relevant semantic profiles</strong></td><td>Contextual Personae to target</td></tr>
+    <tr><td><strong>Expected number of impressions</strong></td><td>Target impression volume</td></tr>
+    <tr><td><strong>Expected level of brand safety</strong></td><td>Target % (slider, e.g. 50%)</td></tr>
+    <tr><td><strong>Expected level of sentiment</strong></td><td>Target % (slider)</td></tr>
+    <tr><td><strong>Expected level of reach</strong></td><td>Target % (slider)</td></tr>
+    <tr><td><strong>Sites list</strong></td><td>Upload a file with authorized sites</td></tr>
+  </tbody>
+</table>
+<p>Click <strong>Save</strong> to store objectives.</p>
+
+<!-- 12. Pixels -->
+<h2 id="pixels">12. Pixels</h2>
+<p>Access the Pixels page from the navigation dropdown menu. This page allows you to create and manage tracking pixels.</p>
+
+<h3>Pixel List</h3>
+<img src="reaveal_capture/pixel.png" alt="Pixel list page" class="screenshot">
+<p>The pixel table displays:</p>
+<table>
+  <thead><tr><th>Column</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>ID</strong></td><td>Unique pixel identifier (e.g. 7165, 7132)</td></tr>
+    <tr><td><strong>Name</strong></td><td>Pixel name (e.g. "Coco Xandr", "pixel_Qwarry_DANONE_IFFO_JANAOUT2026")</td></tr>
+    <tr><td><strong>Customer</strong></td><td>Customer/advertiser (e.g. "Qwarry trading desk", "GroupM")</td></tr>
+    <tr><td><strong>Dimensions</strong></td><td>Configured dimensions shown as badges (e.g. <span class="badge">External Campaign ID</span> <span class="badge">External Placement ID</span> <span class="badge">External Creative ID</span>)</td></tr>
+  </tbody>
+</table>
+<p>Use <strong>Search pixels…</strong> to filter. Pagination at the bottom (Rows per page: 5, page navigation).</p>
+
+<h3>Creating a Pixel</h3>
+<p>Click the <strong>+ Add Pixel</strong> button (top right) to open the creation dialog:</p>
+<img src="reaveal_capture/pixelcrea1.png" alt="Add Pixel dialog" class="screenshot" style="max-width:500px;">
+<p>Fill in the following fields:</p>
+<ol>
+  <li><strong>Customer</strong> — Select from dropdown (e.g. Qwarry trading desk, Starcom, Henkel, Celine, Stellantis, Gamned)</li>
+</ol>
+<img src="reaveal_capture/pixelcrea2.png" alt="Customer dropdown" class="screenshot" style="max-width:500px;">
+<ol start="2">
+  <li><strong>Name</strong> — Enter a descriptive name for the pixel</li>
+  <li><strong>Partner</strong> — Select the DSP/partner from dropdown:</li>
+</ol>
+<img src="reaveal_capture/pixelcrea3.png" alt="Partner dropdown" class="screenshot" style="max-width:500px;">
+<p>Available partners include: None, Adloox, Beeswax, CM 360, DV 360, IAB, IndexExchange, and more.</p>
+<ol start="4">
+  <li>Click <strong>Create</strong> to generate the pixel (or <strong>Cancel</strong> to close).</li>
+</ol>
+
+<h3>Viewing a Pixel &amp; Getting the Tag</h3>
+<p>Click on any pixel in the list to view its details:</p>
+<img src="reaveal_capture/pixelcrea4.png" alt="Pixel detail view with tag" class="screenshot" style="max-width:550px;">
+<p>The detail view shows:</p>
+<ul>
+  <li><strong>Pixel name &amp; ID</strong> (e.g. "Coco Xandr #7132") with an <strong>Edit</strong> button</li>
+  <li><strong>Customer</strong> — e.g. Qwarry trading desk</li>
+  <li><strong>Partner</strong> — e.g. Xandr RTDP</li>
+  <li><strong>Dimension 1, 2, 3</strong> — e.g. Campaign, Line Item, Creative ID</li>
+  <li><strong>Tag</strong> — The full pixel URL to implement in your DSP:</li>
+</ul>
+<p><code>https://i.qwarry.com/imp?id=7132&amp;pl=xandr&amp;sh=f3ab2&amp;im=${AUCTION_ID}&amp;rf=${REFERER_URL_ENC}&amp;d1=${IO_ID}&amp;d2=${CPG_ID}&amp;d3=${CREATIVE_ID}</code></p>
+<p>Click the <strong>copy button</strong> (📋) next to the tag to copy it to your clipboard, then paste it into your DSP platform's tracking settings.</p>
+<div class="note">
+  <strong>Tag structure:</strong> The tag URL includes the pixel ID, platform identifier, a security hash, and macros for the auction ID, referer URL, and dimension values that are automatically replaced by the DSP at serve time.
+</div>
+
+<!-- 13. Glossary -->
+<h2 id="glossary">13. Glossary</h2>
+<img src="reaveal_capture/glossary.png" alt="Glossary page" class="screenshot">
+<p>Access the Glossary from the navigation dropdown. It provides a searchable table of all key terms:</p>
+<table>
+  <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Brand Safety</strong></td><td>Impressions served on URLs considered brand safe according to Qwarry's technology</td></tr>
+    <tr><td><strong>Brand Suitability</strong></td><td>Impressions served on URLs considered brand suitable. Combines brand safety categories along with page sentiment</td></tr>
+    <tr><td><strong>Semos</strong></td><td>Semantic categories by Qwarry</td></tr>
+    <tr><td><strong>Contextual Personae</strong></td><td>Semantic profiles enriched with age and gender derived from individual anonymized Mediametrie Global Internet Measurement data</td></tr>
+    <tr><td><strong>Scored Impressions</strong></td><td>Impressions delivered in URLs analyzed and categorized by Qwarry's technology</td></tr>
+  </tbody>
+</table>
+<p>The glossary also includes detailed descriptions of each Contextual Persona (Ecologist, Fashion Lover, Junk Food Lover, Gastronomist, Healthy Lifestyle, Tech Lover, etc.).</p>
+
+<!-- 14. Troubleshooting -->
+<h2 id="troubleshooting">14. Troubleshooting</h2>
+<table>
+  <thead><tr><th>Issue</th><th>Solution</th></tr></thead>
+  <tbody>
+    <tr><td>"Bad credentials"</td><td>Verify your email and password. Use "Forgot password?" if needed.</td></tr>
+    <tr><td>"Campaign not found"</td><td>Contact your account manager to verify campaign access.</td></tr>
+    <tr><td>"No data found for the selected period"</td><td>Adjust the date range or verify the campaign dates in Setup.</td></tr>
+    <tr><td>"Network error"</td><td>Check your internet connection and try again.</td></tr>
+    <tr><td>Scored % shows 0%</td><td>The pixel may not be receiving data yet. Verify the tag is correctly implemented in your DSP.</td></tr>
+  </tbody>
+</table>
 
 <hr style="margin-top:3rem;border:none;border-top:1px solid var(--border);">
 <p style="color:var(--muted);font-size:0.85rem;margin-top:1rem;"><em>Last updated: May 2026</em></p>
