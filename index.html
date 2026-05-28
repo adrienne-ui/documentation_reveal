@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Qwarry Reveal — User Guide</title>
+  <title>Segment Lab — User Guide</title>
   <style>
     :root{--primary:#6c3baa;--primary-light:#f3eefa;--text:#2d2d2d;--muted:#666;--border:#e0e0e0;}
     *{margin:0;padding:0;box-sizing:border-box;}
@@ -18,6 +18,7 @@
     h1{font-size:2rem;color:#1b2a4a;margin-bottom:0.5rem;}
     h2{font-size:1.5rem;color:#1b2a4a;margin-top:3rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--primary-light);}
     h3{font-size:1.15rem;margin-top:2rem;margin-bottom:0.5rem;}
+    h4{font-size:1rem;margin-top:1.5rem;margin-bottom:0.4rem;}
     p,li{margin-bottom:0.6rem;}ul,ol{padding-left:1.5rem;}
     .subtitle{color:var(--muted);font-size:0.95rem;margin-bottom:2rem;}
     table{width:100%;border-collapse:collapse;margin:1rem 0 1.5rem;font-size:0.9rem;}
@@ -25,369 +26,953 @@
     td{padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);}
     tr:hover td{background:#fafafa;}
     .note{background:#eef6ff;border-left:4px solid #3b82f6;padding:1rem 1.2rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem;}
+    .warning{background:#fff8e1;border-left:4px solid #f59e0b;padding:1rem 1.2rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem;}
     code{background:#f4f4f4;padding:0.15rem 0.4rem;border-radius:3px;font-size:0.85rem;}
-    img.screenshot{max-width:100%;border:1px solid var(--border);border-radius:6px;margin:0.5rem 0 1rem;display:block;}
     .badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600;background:#e8eaf6;color:#3949ab;margin:0.1rem;}
+    .flow{background:#f8f9fa;border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1rem 0;font-size:0.9rem;text-align:center;}
+    .flow .step{display:inline-block;background:#fff;border:1px solid var(--border);border-radius:6px;padding:0.5rem 1rem;margin:0.3rem;}
+    .flow .arrow{display:inline-block;margin:0 0.5rem;color:var(--primary);font-weight:bold;}
+    .screenshot{margin:1.5rem 0;text-align:center;}
+    .screenshot img{max-width:100%;border:1px solid var(--border);border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+    .screenshot figcaption{font-size:0.85rem;color:var(--muted);margin-top:0.5rem;font-style:italic;}
     @media(max-width:768px){.sidebar{position:static;width:100%;height:auto;}.content{margin-left:0;padding:2rem 1.5rem;}}
   </style>
 </head>
 <body>
 <nav class="sidebar">
-  <h2>Reveal by Qwarry<br>User Guide</h2>
+  <h2>Segment Lab<br>User Guide</h2>
   <ul>
     <li><a href="#introduction">1. Introduction</a></li>
-    <li><a href="#getting-started">2. Getting Started</a></li>
-    <li><a href="#navigation">3. Navigation</a></li>
-    <li><a href="#campaigns">4. Campaign List</a></li>
-    <li><a href="#overview">5. Overview Tab</a></li>
-    <li><a href="#domains">6. Domains Tab</a></li>
-    <li><a href="#semos">7. Semos Tab</a></li>
-    <li><a href="#personae">8. Contextual Personae Tab</a></li>
-    <li><a href="#safety">9. Brand Safety &amp; Sentiment</a></li>
-    <li><a href="#reports">10. Reports</a></li>
-    <li><a href="#setup">11. Setup &amp; Objectives</a></li>
-    <li><a href="#pixels">12. Pixels</a></li>
-    <li><a href="#glossary">13. Glossary</a></li>
-    <li><a href="#troubleshooting">14. Troubleshooting</a></li>
+    <li><a href="#architecture">2. How It Works</a></li>
+    <li><a href="#segment-types">3. Segment Types</a></li>
+    <li><a href="#measured-categories">4. Measured Categories</a></li>
+    <li><a href="#semos">5. SEMOs</a></li>
+    <li><a href="#audiences">6. Contextual Audiences</a></li>
+    <li><a href="#combinations">7. Combination Segments</a></li>
+    <li><a href="#youtube">8. YouTube Segments</a></li>
+    <li><a href="#youtube-feedback">9. YouTube Feedback</a></li>
+    <li><a href="#spotlights">10. YouTube Spotlights</a></li>
+    <li><a href="#url-keywords">11. In-URL Keywords</a></li>
+    <li><a href="#socio-demo">12. Socio-Demo Segments</a></li>
+    <li><a href="#technical">13. Technical Segments</a></li>
+    <li><a href="#language">14. Language Segments</a></li>
+    <li><a href="#mappings">15. Partner Mappings</a></li>
+    <li><a href="#reach">16. Reach &amp; Stats</a></li>
+    <li><a href="#zoho">17. Zoho Deals Integration</a></li>
+    <li><a href="#glossary">18. Glossary</a></li>
   </ul>
 </nav>
 <main class="content">
-<h1>Reveal by Qwarry — User Guide</h1>
-<p class="subtitle">URL: <a href="https://reveal.qwarry.com/">https://reveal.qwarry.com/</a> · Languages: English, French · Last updated: May 2026</p>
+<h1>Segment Lab — User Guide</h1>
+<p class="subtitle">URL: <a href="https://segment-lab.qwarry.co/">https://segment-lab.qwarry.co/</a> · Internal platform · Last updated: May 2026</p>
 
 <!-- 1. Introduction -->
 <h2 id="introduction">1. Introduction</h2>
-<p><strong>Reveal by Qwarry</strong> is a campaign analytics platform that provides advertisers and media buyers with deep insights into their digital advertising campaigns. Using Qwarry's proprietary semantic analysis and cookieless targeting technology, Reveal analyzes ad impressions to deliver:</p>
+<p><strong>Segment Lab</strong> is Qwarry's internal segment management platform. It is the central tool used by AdOps and Sales teams to create, configure, and activate audience segments across Qwarry's partner ecosystem (Xandr, Index Exchange, Google).</p>
+<p>Segment Lab allows you to:</p>
 <ul>
-  <li><strong>Brand Safety &amp; Sentiment</strong> scoring</li>
-  <li><strong>Semantic categorization</strong> (Semos) of content where ads are served</li>
-  <li><strong>Contextual Personae</strong> — audience profiling based on content consumption</li>
-  <li><strong>Domain-level analytics</strong> and reporting</li>
-  <li><strong>PPTX report generation</strong> for client presentations</li>
+  <li><strong>Create and manage</strong> all types of targeting segments (contextual, YouTube, socio-demo, technical, language, combinations)</li>
+  <li><strong>Activate segments</strong> on DSP/SSP partners via partner mappings</li>
+  <li><strong>Monitor reach</strong> — view impressions and user counts per segment</li>
+  <li><strong>Tune YouTube targeting</strong> — use AI-powered vector search to find relevant channels and videos</li>
+  <li><strong>Track commercial usage</strong> — link segments to Zoho CRM deals</li>
 </ul>
+<div class="note">
+  <strong>Who uses Segment Lab?</strong><br>
+  • <strong>AdOps</strong> — Create/edit segments, tune YouTube targeting, manage partner mappings<br>
+  • <strong>Sales</strong> — View available segments, check reach data, link segments to deals<br>
+  • <strong>Customers</strong> — Request custom segments via their account manager
+</div>
 
-<!-- 2. Getting Started -->
-<h2 id="getting-started">2. Getting Started</h2>
-<h3>Login</h3>
+<!-- 2. How It Works -->
+<h2 id="architecture">2. How It Works</h2>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/navbar.png" alt="Segment Lab navigation sidebar">
+  <figcaption>Segment Lab sidebar navigation</figcaption>
+</figure>
+<p>The application uses a <strong>left sidebar navigation</strong> with the Qwarry logo at the top. The menu items provide access to all platform sections:</p>
+<ul>
+  <li><strong>Home</strong> — Dashboard overview</li>
+  <li><strong>Measured categories</strong> — Manage the 526 semantic categories (building blocks of segments)</li>
+  <li><strong>Semos</strong> — Create and manage semantic model segments</li>
+  <li><strong>Combination segments</strong> — Build multi-condition targeting rules</li>
+  <li><strong>In Url Keywords</strong> — URL-based keyword targeting</li>
+  <li><strong>Contextual audiences</strong> — User-level audience segments</li>
+  <li><strong>Youtube segments</strong> — AI-powered YouTube channel/video targeting</li>
+  <li><strong>YouTube Feedback</strong> — Review and process feedback on matched channels/videos</li>
+  <li><strong>Youtube Spotlights</strong> — Simplified curated channel lists</li>
+  <li><strong>Socio/Demo segments</strong> — Age and gender targeting</li>
+  <li><strong>Technical segments</strong> — Device, OS, browser targeting</li>
+  <li><strong>Language segments</strong> — Language-based targeting</li>
+</ul>
+<p>The currently active section is highlighted with a <strong>green background</strong>. At the bottom, the sidebar shows the logged-in user's name and a <strong>Privacy Policy</strong> link.</p>
+<p>Segment Lab is the management layer that sits between Qwarry's scoring technology and the DSP/SSP partners where segments are activated.</p>
+
+<div class="flow">
+  <span class="step">Qwarry Scoring Engine</span>
+  <span class="arrow">→</span>
+  <span class="step"><strong>Segment Lab</strong><br>(create &amp; configure)</span>
+  <span class="arrow">→</span>
+  <span class="step">Partner DSPs<br>(Xandr, IX, Google)</span>
+</div>
+
+<h3>The Segment Lifecycle</h3>
 <ol>
-  <li>Go to <a href="https://reveal.qwarry.com/login">https://reveal.qwarry.com/login</a></li>
-  <li>Enter your email and password.</li>
-  <li>Click <strong>Login</strong>.</li>
-</ol>
-<h3>Forgot Password</h3>
-<ol>
-  <li>Click <strong>Forgot password?</strong> on the login page.</li>
-  <li>Enter your email address and click <strong>Continue</strong>.</li>
-  <li>Follow the reset link sent to your email.</li>
+  <li><strong>Creation</strong> — A segment is created in Segment Lab with its parameters (name, description, rules)</li>
+  <li><strong>Configuration</strong> — Thresholds, keywords, or conditions are set depending on segment type</li>
+  <li><strong>Mapping</strong> — The segment is mapped to one or more partners (Xandr, Index Exchange)</li>
+  <li><strong>Activation</strong> — The segment becomes available for targeting on the partner platform</li>
+  <li><strong>Monitoring</strong> — Reach data (impressions, users) is collected and displayed</li>
 </ol>
 
-<!-- 3. Navigation -->
-<h2 id="navigation">3. Navigation</h2>
-<p>The top-right corner shows your initials. Click on it to open the dropdown menu:</p>
-<img src="reaveal_capture/menu.png" alt="Navigation dropdown menu" class="screenshot" style="max-width:250px;">
+<h3>Underlying Technology</h3>
 <table>
-  <thead><tr><th>Menu Item</th><th>Description</th></tr></thead>
+  <thead><tr><th>Component</th><th>Role</th></tr></thead>
   <tbody>
-    <tr><td><strong>Edit Profile</strong></td><td>Update your personal information</td></tr>
-    <tr><td><strong>Glossary</strong></td><td>Definitions of all key terms</td></tr>
-    <tr><td><strong>Pixels</strong></td><td>Create and manage tracking pixels</td></tr>
-    <tr><td><strong>Users</strong></td><td>User management (admin)</td></tr>
-    <tr><td><strong>FR / GB</strong></td><td>Switch between French and English</td></tr>
-    <tr><td><strong>Log out</strong></td><td>End your session</td></tr>
+    <tr><td><strong>Semantic Scoring</strong></td><td>Qwarry's 400+ models analyze web page content and assign category scores</td></tr>
+    <tr><td><strong>Measured Categories</strong></td><td>The scored categories (e.g. "Automotive", "Food & Drink") — the building blocks of segments</td></tr>
+    <tr><td><strong>Vector Search (YouTube)</strong></td><td>AI embeddings + OpenSearch to find semantically relevant YouTube channels/videos</td></tr>
+    <tr><td><strong>Partner APIs</strong></td><td>Xandr API, Index Exchange API — to register and sync segments</td></tr>
   </tbody>
 </table>
 
-<!-- 4. Campaign List -->
-<h2 id="campaigns">4. Campaign List</h2>
-<img src="reaveal_capture/acceuil.png" alt="Campaign list home page" class="screenshot">
-<p>The home page displays all campaigns associated with your account. The table shows:</p>
-<ul>
-  <li><strong>Campaign</strong> — Campaign name with its pixel ID (e.g. #5413)</li>
-  <li><strong>Scored Impressions</strong> — Total number of impressions analyzed</li>
-  <li><strong>Scored %</strong> — Percentage of impressions successfully scored (with progress ring)</li>
-</ul>
-<p>Use the <strong>Search</strong> bar to filter campaigns by name. Use the <strong>date picker</strong> (top right) to select the analysis period.</p>
-<p>Click on any campaign to access its detailed analytics.</p>
-
-<!-- 5. Overview Tab -->
-<h2 id="overview">5. Overview Tab</h2>
-<p>After selecting a campaign, you land on the Overview tab. The header shows the campaign name, date range picker, and a <strong>Dimensions</strong> filter button.</p>
-<img src="reaveal_capture/dash1.png" alt="Campaign header with tabs" class="screenshot">
-<p>The tab bar provides access to: <strong>Overview</strong>, <strong>Domains</strong>, <strong>Semos</strong>, <strong>Contextual Personae</strong>, <strong>Brand Safety &amp; Sentiment</strong>, <strong>Reports</strong>, <strong>Setup &amp; Objectives</strong>.</p>
-<p>The top section displays three summary cards:</p>
-<ul>
-  <li><strong>Total URLs</strong> — Number of unique URLs where ads were served</li>
-  <li><strong>Total Domains</strong> — Number of unique domains</li>
-  <li><strong>Top Language</strong> — Most common content language (with percentage)</li>
-</ul>
-
-<h3>KPI Summary &amp; Impressions Chart</h3>
-<img src="reaveal_capture/dash2.png" alt="KPI summary and impressions timeline" class="screenshot">
-<p>Below the cards, four KPIs are displayed:</p>
-<ul>
-  <li><strong>Impressions</strong> — Total impressions (e.g. 44K)</li>
-  <li><strong>Scored Impressions</strong> — Impressions analyzed by Reveal (e.g. 36K)</li>
-  <li><strong>Brand Safety</strong> — Percentage of brand-safe impressions (e.g. 99.47%)</li>
-  <li><strong>Sentiment</strong> — Percentage of positive sentiment</li>
-</ul>
-<p>A timeline chart shows daily impression volume over the selected period.</p>
-
-<h3>Top Domains &amp; Top Languages</h3>
-<img src="reaveal_capture/dash3.png" alt="Top domains and top languages donut charts" class="screenshot">
-<p>Two donut charts display:</p>
-<ul>
-  <li><strong>Top domains</strong> — Distribution of impressions across domains (with favicon, name, and percentage). Click <strong>View all</strong> to see the full list.</li>
-  <li><strong>Top languages</strong> — Language distribution of content.</li>
-</ul>
-
-<h3>Top Semos &amp; Top Contextual Personae</h3>
-<img src="reaveal_capture/dash4.png" alt="Top Semos and Top Contextual Personae bar charts" class="screenshot">
-<p>Two horizontal bar charts show:</p>
-<ul>
-  <li><strong>Top Semos</strong> — Top 5 semantic categories with impression count and percentage</li>
-  <li><strong>Top Contextual Personae</strong> — Top 5 audience profiles with impression count and percentage</li>
-</ul>
-<div class="note">
-  <strong>Note:</strong> The Semos and Contextual Personae data displayed is unique to each campaign and depends on the content of the websites where ads were served during the selected period.
-</div>
-<p>Click <strong>View all</strong> to navigate to the full tab.</p>
-
-<!-- 6. Domains Tab -->
-<h2 id="domains">6. Domains Tab</h2>
-<img src="reaveal_capture/domains.png" alt="Domains tab - domain list table" class="screenshot">
-<p>The Domains tab shows a <strong>Domain list</strong> table with the following features:</p>
-<ul>
-  <li><strong>Filter</strong> — Filter domains by criteria</li>
-  <li><strong>Column Filter</strong> — Choose which columns to display</li>
-  <li><strong>Export</strong> — Export data to CSV (sent by email)</li>
-  <li><strong>Search</strong> — Search for a specific domain</li>
-</ul>
-<p>Table columns include:</p>
+<!-- 3. Segment Types -->
+<h2 id="segment-types">3. Segment Types Overview</h2>
+<p>Segment Lab manages <strong>8 distinct types</strong> of segments, each serving a different targeting purpose:</p>
 <table>
-  <thead><tr><th>Column</th><th>Description</th></tr></thead>
+  <thead><tr><th>Type</th><th>What It Targets</th><th>How It Works</th></tr></thead>
   <tbody>
-    <tr><td>Domain</td><td>Domain name with favicon</td></tr>
-    <tr><td>Impressions</td><td>Total impressions on this domain</td></tr>
-    <tr><td>Scored Impressions</td><td>Impressions analyzed by Reveal</td></tr>
-  </tbody>
-</table>
-<p>Additional columns available via Column Filter: % Impressions, % Scored Impressions, Scored %, Top Category, Language, Brand Safety, Brand Suitability, Sentiment.</p>
-<p>Click on any domain to see its detailed breakdown.</p>
-
-<!-- 7. Semos Tab -->
-<h2 id="semos">7. Semos Tab</h2>
-<img src="reaveal_capture/semos1.png" alt="Semos tab - chart and demographics" class="screenshot">
-<p>The Semos tab shows:</p>
-<ul>
-  <li><strong>Scored Impressions</strong> total (e.g. 36K)</li>
-  <li>A <strong>daily bar chart</strong> showing impression distribution across top Semos over time (color-coded by category)</li>
-  <li><strong>Age &amp; Gender</strong> table (Source: Panelists) — Breakdown by age group (18-24, 25-34, 35-50, 50-64, 65+) with Men/Women/Total percentages</li>
-</ul>
-
-<h3>Semos List</h3>
-<img src="reaveal_capture/semos2.png" alt="Semos list table" class="screenshot">
-<p>A paginated table listing all Semos with:</p>
-<ul>
-  <li><strong>Semo</strong> — Category name</li>
-  <li><strong>Scored Impressions</strong> — Number of scored impressions</li>
-  <li><strong>% Scored Impressions</strong> — Percentage of total</li>
-</ul>
-<div class="note">
-  <strong>Note:</strong> The Semos and their values vary per campaign. They reflect the semantic content of the pages where the campaign's ads were actually delivered.
-</div>
-<p>Use <strong>Export</strong> to download or <strong>Search</strong> to filter. Pagination controls at the bottom (Rows per page, Go to page).</p>
-
-<h3>SubSemos List</h3>
-<img src="reaveal_capture/semos3.png" alt="SubSemos list table" class="screenshot">
-<p>A detailed breakdown into subcategories (e.g. Healthy Cooking and Eating, Outdoor Decorating, Cocktails, Vegetarian Diets, Desserts and Baking, etc.) with the same columns.</p>
-
-<!-- 8. Contextual Personae Tab -->
-<h2 id="personae">8. Contextual Personae Tab</h2>
-<img src="reaveal_capture/context1.png" alt="Contextual Personae tab - chart" class="screenshot">
-<p>Similar layout to the Semos tab:</p>
-<ul>
-  <li><strong>Scored Impressions</strong> total</li>
-  <li>A <strong>daily bar chart</strong> showing impression distribution across top Contextual Personae over time</li>
-</ul>
-
-<h3>Contextual Personae List</h3>
-<img src="reaveal_capture/context2.png" alt="Contextual Personae list table" class="screenshot">
-<p>Paginated table with:</p>
-<ul>
-  <li><strong>Contextual Personae</strong> — Profile name</li>
-  <li><strong>Scored Impressions</strong> — Number of impressions</li>
-  <li><strong>% Scored Impressions</strong> — Percentage of total</li>
-</ul>
-<div class="note">
-  <strong>Note:</strong> The Contextual Personae and their distribution are specific to each campaign. They reflect the audience profiles associated with the content where ads were served.
-</div>
-
-<!-- 9. Brand Safety & Sentiment -->
-<h2 id="safety">9. Brand Safety &amp; Sentiment Tab</h2>
-<img src="reaveal_capture/safety.png" alt="Brand Safety & Sentiment tab - chart" class="screenshot">
-<p>The top section shows two KPIs:</p>
-<ul>
-  <li><strong>Non brand safe impressions</strong> — Count of unsafe impressions (e.g. 188)</li>
-  <li><strong>Negative impressions</strong> — Count of negative sentiment impressions (e.g. 34K)</li>
-</ul>
-<p>A daily bar chart shows the distribution of sensitive categories over time: Natural Disasters, Political news, Adult, Religion, Social Issues, Tobacco, and Others.</p>
-
-<h3>Sensitive Semos List</h3>
-<img src="reaveal_capture/safety2.png" alt="Sensitive Semos list" class="screenshot">
-<p>Table listing all sensitive categories detected:</p>
-<table>
-  <thead><tr><th>Sensitive Semo</th><th>Example</th></tr></thead>
-  <tbody>
-    <tr><td>Natural Disasters</td><td>31.13%</td></tr>
-    <tr><td>Political news</td><td>31.13%</td></tr>
-    <tr><td>Adult</td><td>11.32%</td></tr>
-    <tr><td>Religion</td><td>7.55%</td></tr>
-    <tr><td>Social Issues</td><td>4.72%</td></tr>
-    <tr><td>Tobacco</td><td>4.72%</td></tr>
-    <tr><td>Crime</td><td>3.77%</td></tr>
-    <tr><td>Injuries</td><td>3.77%</td></tr>
-    <tr><td>Hate Speech</td><td>0.94%</td></tr>
-    <tr><td>Violence</td><td>0.94%</td></tr>
+    <tr><td><strong>SEMOs</strong></td><td>Pages about a specific topic</td><td>Semantic score threshold on a measured category</td></tr>
+    <tr><td><strong>Contextual Audiences</strong></td><td>Users who visited categorized pages</td><td>IDs of users who visited scored URLs (frequency + recency)</td></tr>
+    <tr><td><strong>Combinations</strong></td><td>Pages matching multiple conditions</td><td>AND/OR logic combining multiple SEMOs</td></tr>
+    <tr><td><strong>YouTube Segments</strong></td><td>YouTube channels &amp; videos</td><td>AI vector search matching channels to a theme</td></tr>
+    <tr><td><strong>YouTube Spotlights</strong></td><td>Curated YouTube channel lists</td><td>Simplified vector search for specific channel targeting</td></tr>
+    <tr><td><strong>In-URL Keywords</strong></td><td>Pages with specific words in the URL</td><td>Keyword matching on the page URL string</td></tr>
+    <tr><td><strong>Socio-Demo</strong></td><td>Users by age/gender</td><td>Demographic data from panel partners</td></tr>
+    <tr><td><strong>Technical</strong></td><td>Device, OS, browser</td><td>Technical environment detection</td></tr>
+    <tr><td><strong>Language</strong></td><td>Pages in a specific language</td><td>Language detection linked to a measured category</td></tr>
   </tbody>
 </table>
 
-<h3>Risk Domains</h3>
-<img src="reaveal_capture/safety1.png" alt="Risk Domains table" class="screenshot">
-<p>Lists domains flagged as risky with columns: Domain (clickable link), Scored Impressions, Brand Safety, % Sentiment.</p>
 
-<!-- 10. Reports -->
-<h2 id="reports">10. Reports</h2>
-<img src="reaveal_capture/report.png" alt="Report Builder page" class="screenshot">
-<p>The <strong>Report Builder</strong> allows you to generate PowerPoint (PPTX) presentations from your campaign data.</p>
-<p>To generate a report:</p>
+<!-- 4. Measured Categories -->
+<h2 id="measured-categories">4. Measured Categories</h2>
+<p><strong>Measured Categories</strong> are the building blocks of all segments. They are the 526 semantic categories scored by Qwarry's technology. Each category represents a topic (e.g. "Automotive", "Food &amp; Drink", "Personal Finance") and has:</p>
+<ul>
+  <li><strong>Name</strong> — e.g. "Food & Drink", "Automotive", "Personal Finance"</li>
+  <li><strong>Metadata per language</strong> — Description, keywords, and exclusion list for each supported language</li>
+  <li><strong>Quality metrics</strong> — Accuracy, precision, and recall scores</li>
+</ul>
+<div class="note">
+  <strong>URL Samples:</strong> You can view sample URLs that match a measured category with a given threshold. This helps validate that the category is correctly identifying relevant content before creating a SEMO.
+</div>
+
+<h3>Measured Categories in the Interface</h3>
+
+<h4>List View</h4>
+<figure class="screenshot">
+  <img src="capture_segment_lab/measured1.png" alt="Measured Categories list view">
+  <figcaption>Measured Categories list view</figcaption>
+</figure>
+<p>The list view displays all 526 measured categories sorted by ID (most recent first). Each card shows the category ID and name (e.g. "3506 – Mangas"). A <strong>search bar</strong> at the bottom allows filtering by ID or name, and the <strong>"+ New"</strong> button in the top-right lets you create a new category. Click on a category name to view its details, or click <strong>"Edit"</strong> to modify it.</p>
+
+<h4>Detail View — Measured Category #3506 "Mangas"</h4>
+<figure class="screenshot">
+  <img src="capture_segment_lab/measured2.png" alt="Measured Category #3506 detail - Infos tab">
+  <figcaption>Measured Category #3506 — Infos tab</figcaption>
+</figure>
+<p>The detail view for a measured category has <strong>4 tabs</strong>: Infos, Metadata, Stats, and Sample. The <strong>Infos tab</strong> shows the category name and last update date (October 14th, 2025). The top-right provides an <strong>"Edit"</strong> button (green) and a <strong>"Back"</strong> button to return to the list.</p>
+
+<h4>Detail View — Measured Category #3440 "Numerology and Astrology"</h4>
+<figure class="screenshot">
+  <img src="capture_segment_lab/measured3.png" alt="Measured Category #3440 detail - Metadata tab collapsed">
+  <figcaption>Measured Category #3440 — Metadata tab (collapsed)</figcaption>
+</figure>
+<p>The <strong>Metadata tab</strong> shows language-specific entries. Each supported language (German DE, English GB, Spanish ES, French FR) appears as a collapsible row. Click the dropdown arrow to expand a language and view its content. The copy icon allows copying the metadata for that language.</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/measured4.png" alt="Measured Category #3440 detail - Metadata expanded">
+  <figcaption>Measured Category #3440 — Metadata expanded (English)</figcaption>
+</figure>
+<p>When expanded, each language entry reveals three sections:</p>
+<ul>
+  <li><strong>Description</strong> — A detailed text explaining what the category covers and what it excludes (used by the semantic model for scoring)</li>
+  <li><strong>Keywords</strong> — A list of relevant terms that help the model identify matching content (displayed as grey badges, e.g. "numerology", "astrology", "horoscope", "aries", "taurus"...)</li>
+  <li><strong>Exclusion list</strong> — Terms that should NOT trigger this category, preventing false positives (e.g. "astronomy", "mathematics", "statistics" are excluded from "Numerology and Astrology")</li>
+</ul>
+
+
+<!-- 5. SEMOs -->
+<h2 id="semos">5. SEMOs (Semantic Models)</h2>
+<p>A <strong>SEMO</strong> is the most fundamental segment type. It targets <strong>web pages</strong> whose content matches a specific semantic category above a defined threshold.</p>
+
+<h3>What Is a SEMO?</h3>
+<p>When Qwarry's technology analyzes a web page, it assigns scores to hundreds of categories (called <strong>Measured Categories</strong>). A SEMO defines a rule: "target pages where category X scores above threshold Y".</p>
+
+<div class="flow">
+  <span class="step">Web Page</span>
+  <span class="arrow">→</span>
+  <span class="step">Semantic Scoring<br>(400+ categories)</span>
+  <span class="arrow">→</span>
+  <span class="step">SEMO Rule<br>(category + threshold)</span>
+  <span class="arrow">→</span>
+  <span class="step">Page qualifies<br>for targeting</span>
+</div>
+
+<h3>SEMO Parameters</h3>
+<table>
+  <thead><tr><th>Parameter</th><th>Description</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Name</strong></td><td>Descriptive name of the segment</td><td>"Automotive - High Intent"</td></tr>
+    <tr><td><strong>Measured Category</strong></td><td>The semantic category to evaluate</td><td>Automotive</td></tr>
+    <tr><td><strong>Threshold</strong></td><td>Minimum score required (0-100)</td><td>70</td></tr>
+    <tr><td><strong>Operator</strong></td><td>Comparison operator</td><td>greater_than, equals, less_than</td></tr>
+    <tr><td><strong>Code</strong></td><td>Unique identifier for partner activation</td><td>Auto-generated</td></tr>
+  </tbody>
+</table>
+
+<h3>SEMO Request Status</h3>
+<p>SEMOs follow a workflow before activation:</p>
+<table>
+  <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><span class="badge">requested</span></td><td>SEMO has been requested by sales/adops</td></tr>
+    <tr><td><span class="badge">preparing</span></td><td>Tech team is configuring and validating the SEMO</td></tr>
+    <tr><td><span class="badge">released</span></td><td>SEMO is active and available for targeting</td></tr>
+    <tr><td><span class="badge">rejected</span></td><td>SEMO was rejected (insufficient reach, overlap, etc.)</td></tr>
+  </tbody>
+</table>
+
+<h3>SEMOs in the Interface</h3>
+
+<h4>List View</h4>
+<figure class="screenshot">
+  <img src="capture_segment_lab/semo.png" alt="SEMOs list view">
+  <figcaption>SEMOs list view</figcaption>
+</figure>
+<p>The SEMOs list displays all 385 segments sorted by ID (most recent first). Each card shows:</p>
+<ul>
+  <li>The <strong>ID and name with threshold</strong> in green (e.g. "8120 – Money management (&gt; 600)")</li>
+  <li>The <strong>Code</strong> — the Xandr segment code (e.g. "Code : 42595754")</li>
+  <li>A <strong>status badge</strong> — "Requested" (grey) or "Released" (green)</li>
+  <li>An <strong>"Edit"</strong> button on the right</li>
+</ul>
+<p>A search bar at the bottom filters by ID or name. The <strong>"+ New"</strong> button (top-right) creates a new SEMO.</p>
+
+<h4>Detail View — SEMO #8120 "Money management (&gt; 600)" (Requested)</h4>
+<figure class="screenshot">
+  <img src="capture_segment_lab/semo1.png" alt="SEMO #8120 detail - Infos tab">
+  <figcaption>SEMO #8120 — Infos tab</figcaption>
+</figure>
+<p>The detail header shows the segment name, threshold, status badge, and an <strong>"Update status"</strong> button (gear icon) to change the workflow state. The view has <strong>4 tabs</strong>: Infos, Mapping, Reach, and Zoho stats. The Infos tab displays the <strong>SEMO code</strong> (42595754). Top-right buttons: <strong>"Edit"</strong> (green) and <strong>"Back"</strong>.</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/semo2.png" alt="SEMO #8120 detail - Mapping tab">
+  <figcaption>SEMO #8120 — Mapping tab</figcaption>
+</figure>
+<p>The <strong>Mapping tab</strong> for SEMO #8120 shows it is activated on <strong>4 partners</strong>. Each partner card displays:</p>
+<ul>
+  <li><strong>Partner logo and name</strong> — Xandr (ID: 6), Equativ (ID: 7), TTD (ID: 12), Pubmatic (ID: 8)</li>
+  <li><strong>Created by</strong> — the user who created the mapping (siham@qwarry.com)</li>
+  <li><strong>Created at</strong> — timestamp (29/04/2026 14:48)</li>
+</ul>
+<p>The <strong>"Edit"</strong> button at the bottom allows adding or removing partner mappings.</p>
+
+<h4>Detail View — SEMO #7563 "Weather Forecast (&gt;= 400)" (Released)</h4>
+<figure class="screenshot">
+  <img src="capture_segment_lab/semo3.png" alt="SEMO #7563 detail - Mapping tab">
+  <figcaption>SEMO #7563 — Mapping tab</figcaption>
+</figure>
+<p>This SEMO has the <strong>"Released"</strong> status (green badge) and is mapped to only <strong>1 partner</strong>: IndexExchange (ID: 13). Note "Created by: migration_script" and date "12/05/2026 23:36" — this mapping was created automatically during a bulk migration, not manually.</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/semo4.png" alt="SEMO #7563 detail - Reach tab">
+  <figcaption>SEMO #7563 — Reach tab</figcaption>
+</figure>
+<p>The <strong>Reach tab</strong> for SEMO #7563 shows performance data. Sub-tabs at the top switch between partners: <strong>Xandr</strong> (4 entries, green badge) and <strong>The Trade Desk</strong> (1 entry, green badge). Each reach entry shows:</p>
+<ul>
+  <li><strong>Users (daily)</strong> — 272,000 unique users</li>
+  <li><strong>Impressions (daily)</strong> — 3,370,000 available impressions</li>
+  <li><strong>Date</strong> — 24/11/2025</li>
+  <li><strong>Ad type</strong> — "banner" (first entry), "video" (second entry with 267,000 users / 2,010,000 impressions)</li>
+  <li><strong>Country</strong> — France</li>
+</ul>
+
+<h4>Detail View — SEMO #7613 "Boxing (&gt;= 400)" (Released)</h4>
+<figure class="screenshot">
+  <img src="capture_segment_lab/semo5.png" alt="SEMO #7613 detail - Zoho stats tab">
+  <figcaption>SEMO #7613 — Zoho stats tab</figcaption>
+</figure>
+<p>The <strong>Zoho stats tab</strong> for SEMO #7613 shows <strong>60 linked deals</strong> (indicated in the tab label). A <strong>"Filter by start date"</strong> date picker narrows results. Each deal card shows:</p>
+<ul>
+  <li><strong>Deal name</strong> — the campaign identifier (e.g. "FR_INDEP/COSPIRIT_GENERIQUE_GRANDPUBLIC18+/ALWAYSON_NOV2025NOV2026_INSTREAM")</li>
+  <li><strong>ID</strong> — Zoho deal ID (e.g. 267325000046829001)</li>
+  <li><strong>Start date / End date</strong> — campaign period (e.g. 11/11/2025 – 30/11/2026)</li>
+  <li><strong>Created by</strong> — who linked the deal (ghalial@qwarry.com)</li>
+  <li><strong>Created at</strong> — when the link was made (10/11/2025)</li>
+</ul>
+
+<!-- 6. Contextual Audiences -->
+<h2 id="audiences">6. Contextual Audiences</h2>
+<p>Contextual Audiences target <strong>users (IDs)</strong> rather than pages. They are built from users who have visited pages categorized by Qwarry's technology.</p>
+
+<h3>How Contextual Audiences Differ from SEMOs</h3>
+<table>
+  <thead><tr><th></th><th>SEMO</th><th>Contextual Audience</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Targets</strong></td><td>A web page</td><td>A user (ID)</td></tr>
+    <tr><td><strong>Logic</strong></td><td>"This page is about X"</td><td>"This user has visited pages about X"</td></tr>
+    <tr><td><strong>Reach</strong></td><td>Only on matching pages</td><td>Anywhere the user browses</td></tr>
+    <tr><td><strong>Sitelist</strong></td><td>Compatible</td><td>Not recommended (limits reach)</td></tr>
+  </tbody>
+</table>
+
+<h3>Audience Parameters</h3>
+<table>
+  <thead><tr><th>Parameter</th><th>Description</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Name</strong></td><td>Audience name</td><td>"Eco-Conscious Shoppers FR"</td></tr>
+    <tr><td><strong>Affiliated Segments</strong></td><td>SEMOs that define the audience (1 to 100+)</td><td>["Organic Food", "Sustainable Living"]</td></tr>
+    <tr><td><strong>Frequency</strong></td><td>Minimum visits to qualify</td><td>3 (user must visit 3 matching pages)</td></tr>
+    <tr><td><strong>Recency</strong></td><td>Time window (max 90 days)</td><td>30 days</td></tr>
+    <tr><td><strong>Countries</strong></td><td>Geographic scope</td><td>["FR", "DE", "ES"]</td></tr>
+    <tr><td><strong>Audience Type</strong></td><td>contextual or inapp</td><td>contextual</td></tr>
+    <tr><td><strong>Status</strong></td><td>active, inactive, or archived</td><td>active</td></tr>
+  </tbody>
+</table>
+
+<h3>Frequency & Recency Tuning</h3>
+<ul>
+  <li><strong>Higher frequency</strong> = more engaged users, smaller but more qualified audience</li>
+  <li><strong>Lower frequency</strong> = broader reach, less qualified</li>
+  <li><strong>Shorter recency</strong> = fresher intent (user visited recently)</li>
+  <li><strong>Longer recency</strong> = larger pool but older interest</li>
+</ul>
+<div class="warning">
+  <strong>Important:</strong> Recency cannot exceed 90 days due to data retention limits. Audiences are recalculated daily based on the configured parameters.
+</div>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/contextual.png" alt="Audiences list view">
+  <figcaption>Audiences list view</figcaption>
+</figure>
+<p>The Audiences list shows all 260 contextual audiences. Each card displays the <strong>ID</strong>, <strong>name</strong>, <strong>audience code</strong>, <strong>number of affiliated segments</strong> (e.g. "31 segments"), and <strong>country</strong> (e.g. "FR"). Two actions are available: <strong>"Edit"</strong> to modify the audience, and <strong>"Archive"</strong> (pink button) to deactivate it. The search bar supports filtering by ID, audience code, or name.</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/contextual1.png" alt="Audience detail - Infos tab">
+  <figcaption>Audience detail — Infos tab</figcaption>
+</figure>
+<p>The audience detail view has <strong>3 tabs</strong>: Infos, Stats, and Mapping. The header shows the audience name, an <strong>"Active" status badge</strong> (green), and a <strong>toggle switch</strong> to activate/deactivate the audience. The Infos tab displays:</p>
+<ul>
+  <li><strong>Audience code</strong> — the unique identifier used by partners</li>
+  <li><strong>Countries</strong> — geographic scope (shown as badges, e.g. "France FR")</li>
+  <li><strong>Affiliated segments</strong> — all the SEMOs that define this audience (displayed as grey badges). Users who visit pages matching any of these segments will be included in the audience</li>
+  <li><strong>Frequency</strong> — minimum number of visits required (e.g. "1 hit")</li>
+  <li><strong>Recency</strong> — time window for counting visits (e.g. "30 days")</li>
+</ul>
+
+<!-- 7. Combination Segments -->
+<h2 id="combinations">7. Combination Segments</h2>
+<p>Combination Segments allow you to create <strong>complex targeting rules</strong> by combining multiple measured categories with AND/OR logic.</p>
+
+<h3>How Combinations Work</h3>
+<p>A Combination Segment uses a nested logical structure:</p>
+<div class="flow">
+  <span class="step"><strong>AND</strong><br>(all must match)</span>
+  <span class="arrow">contains</span>
+  <span class="step"><strong>OR groups</strong><br>(at least one must match)</span>
+  <span class="arrow">contains</span>
+  <span class="step"><strong>Conditions</strong><br>(category + threshold + operator)</span>
+</div>
+
+<h3>Example</h3>
+<p>Target pages that are about <strong>Automotive AND (Luxury OR Premium)</strong>:</p>
+<table>
+  <thead><tr><th>Level</th><th>Logic</th><th>Condition</th></tr></thead>
+  <tbody>
+    <tr><td>AND</td><td>All OR groups must match</td><td>—</td></tr>
+    <tr><td>→ OR Group 1</td><td>At least one condition</td><td>Automotive &gt; 70</td></tr>
+    <tr><td>→ OR Group 2</td><td>At least one condition</td><td>Luxury &gt; 60 <strong>OR</strong> Premium &gt; 60</td></tr>
+  </tbody>
+</table>
+
+<h3>Combination Parameters</h3>
+<table>
+  <thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Name</strong></td><td>Descriptive name</td></tr>
+    <tr><td><strong>Description</strong></td><td>Explanation of the targeting logic</td></tr>
+    <tr><td><strong>Code</strong></td><td>Auto-generated unique code for partner activation</td></tr>
+    <tr><td><strong>AND conditions</strong></td><td>Nested OR groups, each containing category/threshold/operator conditions</td></tr>
+  </tbody>
+</table>
+<div class="note">
+  <strong>Use case:</strong> Combinations are ideal for advertisers who need precise contextual targeting — e.g. "pages about Travel AND Luxury" or "pages about Health AND NOT Tobacco".
+</div>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/combination.png" alt="Combination Segments list view">
+  <figcaption>Combination Segments list view</figcaption>
+</figure>
+<p>The list displays all 232 combination segments. Each card shows the <strong>ID</strong>, <strong>name</strong> (e.g. "284 – The Fashion Lover – Standard Brand Safety"), and the <strong>segment code</strong>. Click <strong>"Edit"</strong> to modify or <strong>"+ New"</strong> to create a new combination.</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/combination2.png" alt="Combination Segment detail">
+  <figcaption>Combination Segment detail — Infos tab</figcaption>
+</figure>
+<p>The detail view has <strong>2 tabs</strong>: Infos and Mapping. The Infos tab shows the <strong>segment code</strong> and the <strong>Expression</strong> — the logical formula that defines the combination. The expression uses a compact syntax: <code>((2281&gt;=20)|(2417&gt;0))&amp;((1615&lt;400))&amp;...</code> where numbers are measured category IDs, operators define thresholds, <code>&amp;</code> means AND, and <code>|</code> means OR. This allows very precise multi-condition targeting.</p>
+
+
+<!-- 8. YouTube Segments -->
+<h2 id="youtube">8. YouTube Segments</h2>
+<p>YouTube Segments use <strong>AI-powered vector search</strong> to find YouTube channels and videos that are semantically relevant to a given theme. This is Qwarry's cookieless YouTube targeting solution.</p>
+
+<h3>How YouTube Targeting Works</h3>
+<div class="flow">
+  <span class="step">Define theme<br>(description + keywords)</span>
+  <span class="arrow">→</span>
+  <span class="step">AI generates<br>embedding vector</span>
+  <span class="arrow">→</span>
+  <span class="step">Vector search<br>in OpenSearch</span>
+  <span class="arrow">→</span>
+  <span class="step">AI reranking<br>(Cohere)</span>
+  <span class="arrow">→</span>
+  <span class="step">Matched channels<br>&amp; videos</span>
+</div>
+
+<h3>The Tuning Process</h3>
+<p>YouTube Segments are created and refined through a <strong>tuning</strong> process:</p>
 <ol>
-  <li><strong>Report Name</strong> — Enter a name for the report (e.g. "Report CR7")</li>
-  <li><strong>Select Output File</strong> — Choose <strong>PPT</strong> format</li>
-  <li><strong>Date range</strong> — Select the period to cover</li>
-  <li><strong>Select Data</strong> — Choose which sections to include (multi-select): Overview, Domains, Semos, Tribes</li>
-  <li><strong>Select dimension</strong> — Optionally filter by dimension</li>
-  <li>Click <strong>Generate Report</strong></li>
+  <li><strong>Define the segment</strong> — Provide a name, description, keywords, and exclusion keywords</li>
+  <li><strong>AI Enhancement</strong> — Optionally use AI to generate better descriptions, keywords, or exclusions</li>
+  <li><strong>Run tuning</strong> — The system searches for matching channels across 3 tiers (Large, Medium, Small)</li>
+  <li><strong>Review results</strong> — Inspect the matched channels and videos</li>
+  <li><strong>Adjust parameters</strong> — Fine-tune thresholds, number of results, and exclusions</li>
+  <li><strong>Save</strong> — Confirm the segment, which triggers daily automatic synchronization</li>
 </ol>
+
+<h3>Channel Tiers</h3>
+<p>Channels are categorized by subscriber count into three tiers:</p>
+<table>
+  <thead><tr><th>Tier</th><th>Subscribers</th><th>Use Case</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Large</strong></td><td>≥ 500,000</td><td>Maximum reach, premium channels</td></tr>
+    <tr><td><strong>Medium</strong></td><td>50,000 – 500,000</td><td>Balanced reach and relevance</td></tr>
+    <tr><td><strong>Small</strong></td><td>&lt; 50,000</td><td>Niche, highly relevant channels</td></tr>
+  </tbody>
+</table>
+
+<h3>Tuning Parameters</h3>
+<table>
+  <thead><tr><th>Parameter</th><th>Description</th><th>Default</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Description</strong></td><td>Semantic description of the theme</td><td>—</td></tr>
+    <tr><td><strong>Keywords</strong></td><td>Additional keywords to refine the search</td><td>—</td></tr>
+    <tr><td><strong>Exclusion Keywords</strong></td><td>Keywords to filter out irrelevant results</td><td>—</td></tr>
+    <tr><td><strong>nb_result_large</strong></td><td>Max channels in Large tier</td><td>Varies</td></tr>
+    <tr><td><strong>nb_result_medium</strong></td><td>Max channels in Medium tier</td><td>Varies</td></tr>
+    <tr><td><strong>nb_result_small</strong></td><td>Max channels in Small tier</td><td>Varies</td></tr>
+    <tr><td><strong>scan_k</strong></td><td>Number of nearest neighbors to scan</td><td>10,000</td></tr>
+    <tr><td><strong>min_opensearch_score</strong></td><td>Minimum similarity score (0.0–1.0)</td><td>0.65</td></tr>
+    <tr><td><strong>min_reranking_score</strong></td><td>Minimum AI reranking score (0.0–1.0)</td><td>0.35</td></tr>
+    <tr><td><strong>Language</strong></td><td>Target language for channel search</td><td>fr, en, it, de, ar, zh, th, es, vi, nl</td></tr>
+    <tr><td><strong>Subscriber min/max</strong></td><td>Filter channels by subscriber range</td><td>—</td></tr>
+    <tr><td><strong>Enable reranking</strong></td><td>Use AI reranking for better precision</td><td>true</td></tr>
+  </tbody>
+</table>
+
+<h3>AI Enhancement</h3>
+<p>Segment Lab can use AI (AWS Bedrock Nova) to automatically improve your segment definition:</p>
+<ul>
+  <li><strong>Generate description</strong> — Create a rich semantic description from a segment name</li>
+  <li><strong>Suggest keywords</strong> — Propose relevant keywords to improve search recall</li>
+  <li><strong>Suggest exclusions</strong> — Identify keywords that could bring irrelevant results</li>
+</ul>
+
+<h3>Daily Synchronization</h3>
+<p>Once a YouTube Segment is saved, it is <strong>automatically refreshed daily</strong>:</p>
+<ul>
+  <li>New channels matching the criteria are added</li>
+  <li>Channels that no longer match are removed</li>
+  <li>Videos from matched channels are indexed</li>
+</ul>
+<p>Languages are processed in rotation (e.g. FR+EN on day 1, IT+DE on day 2, etc.) to distribute load.</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_segment.png" alt="YouTube Segments list view">
+  <figcaption>YouTube Segments list view</figcaption>
+</figure>
+<p>The list displays all 226 YouTube segments. Each card shows the <strong>ID</strong>, <strong>name</strong> (e.g. "628 – Reggeaton / Latin Trap"), and a <strong>category badge</strong> (grey, e.g. "Music and Audio", "Video Gaming", "Travel"). Two actions are available: <strong>"⚡ Tune"</strong> (green button) to launch the AI tuning process, and <strong>"Edit"</strong> to modify segment metadata.</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_segment11.png" alt="YouTube Segment detail - Informations tab">
+  <figcaption>YouTube Segment detail — Informations tab</figcaption>
+</figure>
+<p>The segment detail view has <strong>4 tabs</strong>: Informations, Channels, Medias, and Stats. The Informations tab displays:</p>
+<ul>
+  <li><strong>Category</strong> — the thematic category (e.g. "Music and Audio")</li>
+  <li><strong>Vector iteration</strong> — how many times the segment has been tuned/synced (e.g. 21)</li>
+  <li><strong>Last iteration date</strong> — when the last daily sync ran</li>
+  <li><strong>Description</strong> — the semantic description used for vector search</li>
+  <li><strong>Tier quotas</strong> — Large channels (60), Medium channels (200), Small channels (400)</li>
+  <li><strong>Search parameters</strong> — Scan K (2000), Min OpenSearch score (0.6), Min Reranking score (0.2)</li>
+  <li><strong>Keywords</strong> — terms that refine the search (displayed as grey badges)</li>
+  <li><strong>Exclusion keywords</strong> — terms to filter out irrelevant results</li>
+</ul>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_segment12.png" alt="YouTube Segment detail - Channels tab">
+  <figcaption>YouTube Segment detail — Channels tab</figcaption>
+</figure>
+<p>The <strong>Channels tab</strong> shows all matched YouTube channels in a grid layout. Each channel card displays:</p>
+<ul>
+  <li><strong>Channel thumbnail</strong> and <strong>name</strong></li>
+  <li><strong>Tier badge</strong> — HIGH (green, ≥500K subs), MEDIUM (blue, 50K–500K), or LOW</li>
+  <li><strong>Subscriber count</strong> (👤 icon) and <strong>total views</strong> (👁 icon)</li>
+  <li><strong>Description</strong> — AI-generated summary of the channel's content</li>
+  <li><strong>Segment badge</strong> — confirming which segment matched this channel</li>
+</ul>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_segment13.png" alt="YouTube Segment detail - Medias tab">
+  <figcaption>YouTube Segment detail — Medias tab</figcaption>
+</figure>
+<p>The <strong>Medias tab</strong> shows matched videos in a grid with thumbnails. Each video card displays the <strong>video title</strong>, <strong>channel name</strong>, <strong>view count</strong>, <strong>publication date</strong>, a <strong>relevance badge</strong> (HIGH/MEDIUM/LOW), and the <strong>segment name</strong> it was matched to. This allows reviewing whether the matched videos are truly relevant to the segment theme.</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_segment14.png" alt="YouTube Segment detail - Stats tab">
+  <figcaption>YouTube Segment detail — Stats tab</figcaption>
+</figure>
+<p>The <strong>Stats tab</strong> provides a high-level overview with 5 key metrics displayed as cards:</p>
+<ul>
+  <li><strong>In targetings</strong> — number of active targetings using this segment (e.g. 2)</li>
+  <li><strong>In campaigns</strong> — number of campaigns using this segment (e.g. 2)</li>
+  <li><strong>Channel count</strong> — total matched channels (e.g. 358)</li>
+  <li><strong>Media count</strong> — total matched videos (e.g. 915)</li>
+  <li><strong>Total views</strong> — cumulative views across all matched content (e.g. 253.66B)</li>
+</ul>
+
+<h3>The Tuning Interface</h3>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_segment15-tune.png" alt="YouTube Segment tuning form">
+  <figcaption>Tune Segment — configuration form</figcaption>
+</figure>
+<p>The tuning page is the core interface for configuring YouTube segment search. The left panel contains the form fields:</p>
+<ul>
+  <li><strong>Name</strong> — segment name (read-only during tuning)</li>
+  <li><strong>Description*</strong> — the semantic description that gets converted into an embedding vector</li>
+  <li><strong>Keywords*</strong> — additional terms to improve search recall (add with Enter key, remove with ✕)</li>
+  <li><strong>Exclusion keywords</strong> — terms to filter out (optional)</li>
+</ul>
+<p>The right panel shows <strong>Recommendations</strong> with suggested parameter values for different use cases:</p>
+<ul>
+  <li><strong>Broad theme</strong> (entertainment, fashion, humor) — Min OpenSearch score: 0.60, Scan K: 2000, keep standard quotas</li>
+  <li><strong>Niche theme</strong> (wine, finance, specific sport) — Min OpenSearch score: 0.50, Scan K: 3000, reduce Large channels, increase Small channels</li>
+</ul>
+<p>Tips at the bottom: "Not enough results? → Lower Min OpenSearch score or Min Reranking score" and "Too many off-topic results? → Increase Min Reranking score to 0.25–0.30".</p>
+<p>Three action buttons: <strong>"Reset"</strong> (pink, clears changes), <strong>"Preview"</strong> (runs tuning without saving), and <strong>"Save"</strong> (green, runs tuning and saves results).</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_segment15-tune1.png" alt="YouTube Segment tuning in progress">
+  <figcaption>Tuning in progress — real-time steps panel</figcaption>
+</figure>
+<p>When tuning is launched (Preview or Save), the right panel switches to a <strong>Steps</strong> view showing real-time progress. Each step displays its name, duration, and a green checkmark when complete:</p>
+<ol>
+  <li><strong>Generating embedding</strong> (0.7s) — converts description + keywords into a vector</li>
+  <li><strong>Searching large channels</strong> (2.5s) — k-NN search in the Large tier (Found: 60 → Filtered: 60)</li>
+  <li><strong>Reranking large channels</strong> (0.5s) — AI reranking reduces results (Before: 60 → After: 4)</li>
+  <li><strong>Searching medium channels</strong> — currently in progress (animated spinner)</li>
+</ol>
+<p>The form fields become greyed out (disabled) during tuning. A <strong>"Cancel"</strong> button (red) allows stopping the process.</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_segment15-tune2.png" alt="YouTube Segment tuning results">
+  <figcaption>Tuning results — preview of matched channels and videos</figcaption>
+</figure>
+<p>After tuning completes, the results are displayed in columns by tier:</p>
+<ul>
+  <li><strong>Large channels (4)</strong> — e.g. Don Omar (12.3M subs, US), abdoulupnext (2.4M subs, US)</li>
+  <li><strong>Medium channels (2)</strong> — e.g. Kryssy (79K subs, FR), Chabine Prod Urban Channel (191K subs, FR)</li>
+  <li><strong>Small channels (11)</strong> — e.g. CollectifMetisseVEVO (35.8K subs), DJ Max's (2.5K subs, FR)</li>
+  <li><strong>Videos (1)</strong> — individual videos matched by content</li>
+</ul>
+<p>Each result shows the <strong>channel avatar</strong>, <strong>name</strong>, <strong>subscriber count</strong>, <strong>country</strong>, and a <strong>relevance score</strong> (in green, e.g. "Score: 0.26"). The left panel shows the complete steps log with a <strong>"Collapse"</strong> button. Buttons at the bottom: <strong>"Reset"</strong>, <strong>"Preview"</strong>, and <strong>"Save"</strong>.</p>
+
+<h3>YouTube Feedback</h3>
+<p>Users can provide feedback on matched channels and videos to improve targeting quality:</p>
+<table>
+  <thead><tr><th>Feedback Reason</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><span class="badge">OUT_OF_CONTEXT</span></td><td>Channel/video is not relevant to the segment theme</td></tr>
+    <tr><td><span class="badge">LANGUAGE_ERROR</span></td><td>Channel/video is in the wrong language</td></tr>
+    <tr><td><span class="badge">OUT_OF_TIERING</span></td><td>Channel is in the wrong subscriber tier</td></tr>
+    <tr><td><span class="badge">OTHER</span></td><td>Other issue (details provided)</td></tr>
+  </tbody>
+</table>
+
+<!-- 9. YouTube Feedback -->
+<h2 id="youtube-feedback">9. YouTube Feedback</h2>
+<p>The YouTube Feedback page provides a centralized view of all feedback submitted on matched channels and videos. It allows the team to review, filter, and process reported issues.</p>
+
+<h3>Feedback Interface</h3>
+<p>The feedback page is split into two tabs:</p>
+<ul>
+  <li><strong>Channels</strong> — Feedback on YouTube channels (321 results)</li>
+  <li><strong>Videos</strong> — Feedback on individual videos (90 results)</li>
+</ul>
+
+<h3>Filters</h3>
+<table>
+  <thead><tr><th>Filter</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Status</strong></td><td>All statuses, Pending, Processed</td></tr>
+    <tr><td><strong>Reason</strong></td><td>All reasons, Out of context, Language error, Out of tiering, Other</td></tr>
+    <tr><td><strong>Start date / End date</strong></td><td>Filter by creation date range</td></tr>
+    <tr><td><strong>Targeting ID</strong></td><td>Search by specific targeting ID</td></tr>
+  </tbody>
+</table>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_feedback.png" alt="YouTube Feedback - Channels tab">
+  <figcaption>YouTube Feedback — Channels tab</figcaption>
+</figure>
+<p>The <strong>Channels tab</strong> displays a paginated table (321 results, 17 pages) with columns: <strong>ID</strong>, <strong>Channel Name</strong> (clickable link to YouTube), <strong>Segment Name</strong>, <strong>Reason</strong> (colored badge — "Out of context" in orange, "Language error" in blue, etc.), <strong>Status</strong> ("PENDING" in yellow, "PROCESSED" in green), <strong>Created At</strong> (timestamp), and <strong>Actions</strong> (toggle to mark as processed). Filters at the top allow narrowing by status, reason, date range, or targeting ID.</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_feedback1.png" alt="YouTube Feedback - Videos tab">
+  <figcaption>YouTube Feedback — Videos tab</figcaption>
+</figure>
+<p>The <strong>Videos tab</strong> has the same structure but for individual videos (90 results, 5 pages). Columns include <strong>ID</strong>, <strong>Video Title</strong> (clickable link), <strong>Segment Name</strong>, <strong>Reason</strong>, <strong>Status</strong>, <strong>Created At</strong>, and <strong>Actions</strong>. This helps identify specific videos that were incorrectly matched to a segment theme.</p>
+
+<!-- 10. YouTube Spotlights -->
+<h2 id="spotlights">10. YouTube Spotlights</h2>
+<p>YouTube Spotlights are a <strong>simplified version</strong> of YouTube Segments, designed for creating curated channel lists without the tiered structure.</p>
+
+<h3>Spotlights vs YouTube Segments</h3>
+<table>
+  <thead><tr><th></th><th>YouTube Segment</th><th>YouTube Spotlight</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Tiers</strong></td><td>3 tiers (Large, Medium, Small)</td><td>Single flat list</td></tr>
+    <tr><td><strong>Complexity</strong></td><td>Full parameter control</td><td>Simplified (description + keywords)</td></tr>
+    <tr><td><strong>Use case</strong></td><td>Broad thematic targeting</td><td>Curated channel lists for specific campaigns</td></tr>
+    <tr><td><strong>Daily sync</strong></td><td>Yes</td><td>Yes</td></tr>
+  </tbody>
+</table>
+
+<h3>Spotlight Parameters</h3>
+<table>
+  <thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Name</strong></td><td>Spotlight name</td></tr>
+    <tr><td><strong>Description</strong></td><td>Semantic description for vector search</td></tr>
+    <tr><td><strong>Keywords</strong></td><td>Keywords to refine the search</td></tr>
+    <tr><td><strong>Exclusion Keywords</strong></td><td>Keywords to exclude</td></tr>
+    <tr><td><strong>nb_results</strong></td><td>Total number of channels to find</td></tr>
+    <tr><td><strong>Language</strong></td><td>Target language</td></tr>
+    <tr><td><strong>Subscriber min/max</strong></td><td>Subscriber range filter</td></tr>
+  </tbody>
+</table>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_spotlight.png" alt="YouTube Spotlights list view">
+  <figcaption>YouTube Spotlights list view</figcaption>
+</figure>
+<p>The Spotlights list shows all 16 spotlights. Each card displays the <strong>ID</strong> and <strong>name</strong> (e.g. "80 – Travel", "79 – Auto &amp; Vehicles", "78 – Comedy"). Like YouTube Segments, each has a <strong>"⚡ Tune"</strong> button and an <strong>"Edit"</strong> button. The simpler structure (no category badge, no tier info in the list) reflects the streamlined nature of spotlights.</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_spotlight1.png" alt="Spotlight detail - Informations tab">
+  <figcaption>Spotlight detail — Informations tab</figcaption>
+</figure>
+<p>The spotlight detail view has <strong>3 tabs</strong>: Informations, Channels, and Medias. The Informations tab shows:</p>
+<ul>
+  <li><strong>Vector iteration</strong> — sync count (e.g. 10)</li>
+  <li><strong>Last iteration date</strong> — when the last refresh ran (e.g. May 22, 2026)</li>
+  <li><strong>Description</strong> — a rich semantic description used for vector search (can be quite long and detailed)</li>
+  <li><strong>Keywords</strong> — extensive list of relevant terms displayed as grey badges</li>
+</ul>
+<p>Note: Unlike YouTube Segments, spotlights do not show tier quotas or separate Large/Medium/Small counts — they use a single flat list of channels.</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_spotlight2.png" alt="Spotlight detail - Channels tab">
+  <figcaption>Spotlight detail — Channels tab</figcaption>
+</figure>
+<p>The <strong>Channels tab</strong> displays matched channels in the same grid format as YouTube Segments. Each card shows the channel <strong>avatar</strong>, <strong>name</strong>, <strong>tier badge</strong> (HIGH/MEDIUM), <strong>subscriber count</strong>, <strong>total views</strong>, a <strong>description</strong>, and a <strong>relevance score</strong> (e.g. "Score: 0.85"). Channels are sorted by score (highest first). In this example, Spotlight #80 (Travel) has 9,834 matched channels.</p>
+
+<h3>Spotlight Tuning</h3>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_spotlight1_tune.png" alt="Spotlight tuning form - top">
+  <figcaption>Spotlight tuning form — description and keywords</figcaption>
+</figure>
+<p>The spotlight tuning form is similar to YouTube Segment tuning but with fewer parameters. The top section contains:</p>
+<ul>
+  <li><strong>Name</strong> — spotlight name (e.g. "News &amp; Politics")</li>
+  <li><strong>Description*</strong> — detailed semantic description for the embedding</li>
+  <li><strong>Keywords*</strong> — list of keywords (add with Enter, remove with ✕)</li>
+  <li><strong>Exclusion keywords</strong> — optional terms to exclude</li>
+</ul>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_spotlight2_tune.png" alt="Spotlight tuning form - parameters">
+  <figcaption>Spotlight tuning form — search parameters</figcaption>
+</figure>
+<p>Below the keywords, the form shows the search parameters specific to spotlights:</p>
+<ul>
+  <li><strong>Language</strong> — dropdown to select target language (e.g. "French")</li>
+  <li><strong>Min subscribers*</strong> — minimum subscriber threshold (e.g. 5,000)</li>
+  <li><strong>Max subscribers</strong> — optional maximum (∞ if empty)</li>
+  <li><strong>Enable reranking</strong> — toggle switch (green = enabled)</li>
+  <li><strong>Number of results*</strong> — total channels to find (e.g. 3,000)</li>
+  <li><strong>Scan K*</strong> — number of nearest neighbors to evaluate (e.g. 2,000)</li>
+  <li><strong>Min OpenSearch score*</strong> — minimum similarity threshold (e.g. 0.6)</li>
+  <li><strong>Min Reranking score*</strong> — minimum AI reranking threshold (e.g. 0.2)</li>
+</ul>
+<p>Action buttons: <strong>"Reset"</strong> (pink), <strong>"Preview"</strong> (grey), and <strong>"Save"</strong> (green).</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/youtube_spotlight3_tune.png" alt="Spotlight tuning in progress">
+  <figcaption>Spotlight tuning in progress</figcaption>
+</figure>
+<p>When tuning runs, the right panel shows the <strong>Steps</strong> progress (same as YouTube Segments but without tier separation):</p>
+<ol>
+  <li><strong>Generating embedding</strong> (0.2s) — vector creation</li>
+  <li><strong>Searching channels</strong> (3.2s) — single search across all channels (Found: 2000 → Filtered: 2000)</li>
+  <li><strong>Reranking channels</strong> (13.2s) — AI reranking (Before: 2000 → After: 1845)</li>
+  <li><strong>Searching videos</strong> — currently in progress</li>
+</ol>
+<p>A <strong>"Cancel"</strong> button (red) allows stopping the process at any time.</p>
+
+
+<!-- 11. In-URL Keywords -->
+<h2 id="url-keywords">11. In-URL Keywords Segments</h2>
+<p>In-URL Keywords segments target pages where <strong>specific keywords appear in the page URL</strong>. This is a simple but effective targeting method for pages with descriptive URLs.</p>
+
+<h3>How It Works</h3>
+<p>The system checks if any of the defined keywords are present in the URL string of a web page. If a match is found, the page qualifies for the segment.</p>
+
+<h3>Example</h3>
+<p>Segment: <strong>"Electric Vehicles"</strong> with keywords: <code>["electric-car", "ev-", "tesla", "electric-vehicle"]</code></p>
+<p>Matching URLs:</p>
+<ul>
+  <li><code>https://news.com/2026/05/<strong>electric-car</strong>-sales-record</code> ✓</li>
+  <li><code>https://auto.fr/reviews/<strong>tesla</strong>-model-3</code> ✓</li>
+  <li><code>https://finance.com/stocks/apple-earnings</code> ✗</li>
+</ul>
+
+<h3>Parameters</h3>
+<table>
+  <thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Name</strong></td><td>Segment name</td></tr>
+    <tr><td><strong>Description</strong></td><td>What this segment targets</td></tr>
+    <tr><td><strong>Keywords</strong></td><td>Array of keywords to match in URLs</td></tr>
+    <tr><td><strong>Code</strong></td><td>Auto-generated unique code</td></tr>
+  </tbody>
+</table>
 <div class="note">
-  <strong>Note:</strong> Reports are generated asynchronously as PPTX files. You will receive an email with the download link when the report is ready. The generated presentation includes charts, tables, and key metrics ready to share with clients.
+  <strong>Best practice:</strong> Use URL-friendly keywords (hyphenated, lowercase). Avoid overly generic terms that would match too many pages.
 </div>
 
-<!-- 11. Setup & Objectives -->
-<h2 id="setup">11. Setup &amp; Objectives</h2>
-<p>The Setup &amp; Objectives tab has two sub-tabs: <strong>Setup</strong> and <strong>Objectives</strong>.</p>
+<figure class="screenshot">
+  <img src="capture_segment_lab/in_url.png" alt="In-URL Keywords list view">
+  <figcaption>In-URL Keywords Segments list view</figcaption>
+</figure>
+<p>The list displays all 118 In-URL Keywords segments. Each card shows the <strong>ID</strong>, <strong>name</strong> (e.g. "333 – Purites", "267 – Specific – Danone – IFFO"), and the <strong>segment code</strong>. Click <strong>"Edit"</strong> to modify or <strong>"+ New"</strong> to create a new segment.</p>
 
-<h3>Setup</h3>
-<img src="reaveal_capture/setup1.png" alt="Setup sub-tab" class="screenshot">
-<p>Configure the campaign's technical settings:</p>
+<figure class="screenshot">
+  <img src="capture_segment_lab/in_url1.png" alt="In-URL Keywords detail - Infos tab">
+  <figcaption>In-URL Keywords Segment detail — Infos tab</figcaption>
+</figure>
+<p>The detail view has <strong>2 tabs</strong>: Infos and Mapping. The Infos tab shows the <strong>segment code</strong> and the <strong>Keywords</strong> — the list of terms that are matched against page URLs. Keywords are displayed as a continuous text string (e.g. "daily hygiene routine feminine hygiene daily stay fresh all day personal care routine..."). Any page whose URL contains one of these terms will qualify for the segment.</p>
+
+<figure class="screenshot">
+  <img src="capture_segment_lab/in_url2.png" alt="In-URL Keywords detail - Mapping tab">
+  <figcaption>In-URL Keywords Segment detail — Mapping tab</figcaption>
+</figure>
+<p>The <strong>Mapping tab</strong> shows which partners this segment is activated on. In this example, segment #113 is mapped to <strong>Xandr</strong> (ID: 6), created by tech@qwarry.com on 02/10/2024. The <strong>"Edit"</strong> button allows adding or removing partner mappings.</p>
+
+<!-- 12. Socio-Demo Segments -->
+<h2 id="socio-demo">12. Socio-Demo Segments</h2>
+<p>Socio-Demographic segments target users based on <strong>age and gender</strong> data provided by panel measurement partners (e.g. Médiamétrie).</p>
+
+<h3>Parameters</h3>
+<table>
+  <thead><tr><th>Parameter</th><th>Description</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Name</strong></td><td>Segment name</td><td>"Women 25-34"</td></tr>
+    <tr><td><strong>Description</strong></td><td>Target demographic</td><td>"Female users aged 25-34"</td></tr>
+    <tr><td><strong>Partner ID</strong></td><td>Data partner providing the demographic data</td><td>Médiamétrie</td></tr>
+    <tr><td><strong>Code</strong></td><td>Unique identifier</td><td>Auto-generated</td></tr>
+  </tbody>
+</table>
+<div class="note">
+  <strong>Privacy:</strong> Socio-demo data comes from anonymized panel measurements. No personal data is collected or stored by Qwarry.
+</div>
+
+<!-- 13. Technical Segments -->
+<h2 id="technical">13. Technical Segments</h2>
+<p>Technical segments target users based on their <strong>device, operating system, or browser</strong> characteristics.</p>
+
+<h3>Parameters</h3>
+<table>
+  <thead><tr><th>Parameter</th><th>Description</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Name</strong></td><td>Segment name</td><td>"Mobile iOS Users"</td></tr>
+    <tr><td><strong>Description</strong></td><td>Technical criteria</td><td>"Users on iOS mobile devices"</td></tr>
+    <tr><td><strong>Code</strong></td><td>Unique identifier</td><td>Auto-generated</td></tr>
+  </tbody>
+</table>
+
+<h3>Common Technical Segments</h3>
+<ul>
+  <li>Desktop vs Mobile vs Tablet</li>
+  <li>iOS vs Android</li>
+  <li>Chrome vs Safari vs Firefox</li>
+  <li>Connected TV (CTV)</li>
+</ul>
+
+<!-- 14. Language Segments -->
+<h2 id="language">14. Language Segments</h2>
+<p>Language segments target pages written in a <strong>specific language</strong>, as detected by Qwarry's semantic analysis.</p>
+
+<h3>Parameters</h3>
+<table>
+  <thead><tr><th>Parameter</th><th>Description</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Name</strong></td><td>Segment name</td><td>"French Content"</td></tr>
+    <tr><td><strong>Measured Category</strong></td><td>Language detection category</td><td>French language model</td></tr>
+    <tr><td><strong>Code</strong></td><td>Unique identifier</td><td>Auto-generated</td></tr>
+  </tbody>
+</table>
+
+<h3>Supported Languages</h3>
+<p>Qwarry supports language detection across <strong>26+ languages</strong> including: French, English, Spanish, German, Italian, Portuguese, Arabic, Chinese, Thai, Vietnamese, Dutch, and more.</p>
+
+<!-- 15. Partner Mappings -->
+<h2 id="mappings">15. Partner Mappings</h2>
+<p>Partner Mappings connect Segment Lab segments to external DSP/SSP platforms where they can be activated for campaign targeting.</p>
+
+<h3>How Mappings Work</h3>
+<div class="flow">
+  <span class="step">Segment in<br>Segment Lab</span>
+  <span class="arrow">→</span>
+  <span class="step">Map to partner(s)</span>
+  <span class="arrow">→</span>
+  <span class="step">Segment registered<br>on partner platform</span>
+  <span class="arrow">→</span>
+  <span class="step">Available for<br>campaign targeting</span>
+</div>
+
+<h3>Supported Partners</h3>
+<table>
+  <thead><tr><th>Partner</th><th>Type</th><th>Segment Types Supported</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Xandr (AppNexus)</strong></td><td>DSP/SSP</td><td>All segment types</td></tr>
+    <tr><td><strong>Equativ</strong></td><td>SSP</td><td>SEMOs, Combinations, In-URL Keywords, Socio-Demo, Technical, Language</td></tr>
+    <tr><td><strong>The Trade Desk (TTD)</strong></td><td>DSP</td><td>SEMOs, Combinations</td></tr>
+    <tr><td><strong>Pubmatic</strong></td><td>SSP</td><td>SEMOs, Combinations</td></tr>
+    <tr><td><strong>Index Exchange</strong></td><td>SSP</td><td>SEMOs, Combinations, In-URL Keywords, Socio-Demo, Technical, Language</td></tr>
+    <tr><td><strong>Google</strong></td><td>DSP</td><td>Google taxonomy mapping</td></tr>
+  </tbody>
+</table>
+
+<h3>Mapping a Segment</h3>
+<p>Each segment type has a <strong>Mappings</strong> section where you can:</p>
+<ol>
+  <li>View current partner mappings</li>
+  <li>Add a new mapping (select partner from the list)</li>
+  <li>Remove a mapping (deactivates the segment on that partner)</li>
+</ol>
+<div class="warning">
+  <strong>Important:</strong> When you map a segment to a partner, it is automatically registered on the partner's platform via their API. Removing a mapping deactivates the segment on that partner.
+</div>
+
+<!-- 16. Reach & Stats -->
+<h2 id="reach">16. Reach &amp; Stats</h2>
+<p>Segment Lab provides reach data to help evaluate segment performance and sizing.</p>
+
+<h3>Available Metrics</h3>
+<table>
+  <thead><tr><th>Metric</th><th>Description</th><th>Source</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Impressions</strong></td><td>Number of ad impressions matching the segment</td><td>Xandr</td></tr>
+    <tr><td><strong>Users</strong></td><td>Number of unique users in the segment</td><td>Xandr</td></tr>
+    <tr><td><strong>First IDs Count</strong></td><td>Number of first-party IDs in the audience</td><td>Internal</td></tr>
+    <tr><td><strong>Xandr Count</strong></td><td>Number of IDs synced to Xandr</td><td>Xandr</td></tr>
+  </tbody>
+</table>
+
+<h3>Reach Data by Segment Type</h3>
+<ul>
+  <li><strong>SEMOs</strong> — Reach data available per country and ad type (banner, video, native, audio)</li>
+  <li><strong>Contextual Audiences</strong> — Stats showing first IDs count and Xandr synced count</li>
+  <li><strong>YouTube Segments</strong> — Number of matched channels and videos per tier</li>
+</ul>
+
+<h3>Xandr Reach Data</h3>
+<p>Reach data from Xandr is synchronized daily and broken down by:</p>
+<table>
+  <thead><tr><th>Dimension</th><th>Values</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Ad Type</strong></td><td>Banner, Video, Native, Audio</td></tr>
+    <tr><td><strong>Country</strong></td><td>FR, DE, ES, GB, IT, US, etc.</td></tr>
+    <tr><td><strong>Segment Code</strong></td><td>The segment's unique code on Xandr</td></tr>
+  </tbody>
+</table>
+
+<!-- 17. Zoho Deals Integration -->
+<h2 id="zoho">17. Zoho Deals Integration</h2>
+<p>Segment Lab integrates with <strong>Zoho CRM</strong> to link segments to commercial deals, providing visibility on which segments are used in active campaigns.</p>
+
+<h3>How It Works</h3>
+<ul>
+  <li>Zoho deals are synchronized <strong>every hour</strong> automatically</li>
+  <li>Each deal can reference multiple segment types: Contextual Audiences, SEMOs, Custom Tribes, Socio-Demo</li>
+  <li>Sales teams can view which deals use a specific segment</li>
+  <li>Campaign start/end dates from Zoho are linked to segment usage</li>
+</ul>
+
+<h3>Deal Information</h3>
 <table>
   <thead><tr><th>Field</th><th>Description</th></tr></thead>
   <tbody>
-    <tr><td><strong>Pixel Id</strong></td><td>The tracking pixel ID associated with this campaign (e.g. 4394)</td></tr>
-    <tr><td><strong>Dimension 1–5</strong></td><td>Custom dimension labels for data segmentation (e.g. Campaign, Line Item, Creative ID)</td></tr>
+    <tr><td><strong>Deal Name</strong></td><td>Name of the commercial deal in Zoho</td></tr>
+    <tr><td><strong>Segments</strong></td><td>List of segments associated with the deal</td></tr>
+    <tr><td><strong>Campaign Start Date</strong></td><td>When the campaign using these segments starts</td></tr>
+    <tr><td><strong>Campaign End Date</strong></td><td>When the campaign ends</td></tr>
+    <tr><td><strong>Owner</strong></td><td>Sales person responsible for the deal</td></tr>
   </tbody>
 </table>
-<p>Click <strong>Save</strong> to apply changes.</p>
 
-<h3>Objectives</h3>
-<img src="reaveal_capture/setup.png" alt="Objectives sub-tab" class="screenshot">
-<p>Define campaign goals and targeting parameters:</p>
-<table>
-  <thead><tr><th>Field</th><th>Description</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Dates of the campaign</strong></td><td>Start and end dates</td></tr>
-    <tr><td><strong>Targeted language(s)</strong></td><td>Language targeting (dropdown)</td></tr>
-    <tr><td><strong>Tracked categories</strong></td><td>Semos to track (maximum 2)</td></tr>
-    <tr><td><strong>Other categories</strong></td><td>Additional categories of interest</td></tr>
-    <tr><td><strong>Categories to avoid</strong></td><td>Semos to exclude</td></tr>
-    <tr><td><strong>Relevant semantic profiles</strong></td><td>Contextual Personae to target</td></tr>
-    <tr><td><strong>Expected number of impressions</strong></td><td>Target impression volume</td></tr>
-    <tr><td><strong>Expected level of brand safety</strong></td><td>Target % (slider, e.g. 50%)</td></tr>
-    <tr><td><strong>Expected level of sentiment</strong></td><td>Target % (slider)</td></tr>
-    <tr><td><strong>Expected level of reach</strong></td><td>Target % (slider)</td></tr>
-    <tr><td><strong>Sites list</strong></td><td>Upload a file with authorized sites</td></tr>
-  </tbody>
-</table>
-<p>Click <strong>Save</strong> to store objectives.</p>
-
-<!-- 12. Pixels -->
-<h2 id="pixels">12. Pixels</h2>
-<p>Access the Pixels page from the navigation dropdown menu. This page allows you to create and manage tracking pixels.</p>
-
-<h3>Pixel List</h3>
-<img src="reaveal_capture/pixel.png" alt="Pixel list page" class="screenshot">
-<p>The pixel table displays:</p>
-<table>
-  <thead><tr><th>Column</th><th>Description</th></tr></thead>
-  <tbody>
-    <tr><td><strong>ID</strong></td><td>Unique pixel identifier (e.g. 7165, 7132)</td></tr>
-    <tr><td><strong>Name</strong></td><td>Pixel name (e.g. "Coco Xandr", "pixel_Qwarry_DANONE_IFFO_JANAOUT2026")</td></tr>
-    <tr><td><strong>Customer</strong></td><td>Customer/advertiser (e.g. "Qwarry trading desk", "GroupM")</td></tr>
-    <tr><td><strong>Dimensions</strong></td><td>Configured dimensions shown as badges (e.g. <span class="badge">External Campaign ID</span> <span class="badge">External Placement ID</span> <span class="badge">External Creative ID</span>)</td></tr>
-  </tbody>
-</table>
-<p>Use <strong>Search pixels…</strong> to filter. Pagination at the bottom (Rows per page: 5, page navigation).</p>
-
-<h3>Creating a Pixel</h3>
-<p>Click the <strong>+ Add Pixel</strong> button (top right) to open the creation dialog:</p>
-<img src="reaveal_capture/pixelcrea1.png" alt="Add Pixel dialog" class="screenshot" style="max-width:500px;">
-<p>Fill in the following fields:</p>
-<ol>
-  <li><strong>Customer</strong> — Select from dropdown (e.g. Qwarry trading desk, Starcom, Henkel, Celine, Stellantis, Gamned)</li>
-</ol>
-<img src="reaveal_capture/pixelcrea2.png" alt="Customer dropdown" class="screenshot" style="max-width:500px;">
-<ol start="2">
-  <li><strong>Name</strong> — Enter a descriptive name for the pixel</li>
-  <li><strong>Partner</strong> — Select the DSP/partner from dropdown:</li>
-</ol>
-<img src="reaveal_capture/pixelcrea3.png" alt="Partner dropdown" class="screenshot" style="max-width:500px;">
-<p>Available partners include: None, Adloox, Beeswax, CM 360, DV 360, IAB, IndexExchange, and more.</p>
-<ol start="4">
-  <li>Click <strong>Create</strong> to generate the pixel (or <strong>Cancel</strong> to close).</li>
-</ol>
-
-<h3>Viewing a Pixel &amp; Getting the Tag</h3>
-<p>Click on any pixel in the list to view its details:</p>
-<img src="reaveal_capture/pixelcrea4.png" alt="Pixel detail view with tag" class="screenshot" style="max-width:550px;">
-<p>The detail view shows:</p>
-<ul>
-  <li><strong>Pixel name &amp; ID</strong> (e.g. "Coco Xandr #7132") with an <strong>Edit</strong> button</li>
-  <li><strong>Customer</strong> — e.g. Qwarry trading desk</li>
-  <li><strong>Partner</strong> — e.g. Xandr RTDP</li>
-  <li><strong>Dimension 1, 2, 3</strong> — e.g. Campaign, Line Item, Creative ID</li>
-  <li><strong>Tag</strong> — The full pixel URL to implement in your DSP:</li>
-</ul>
-<p><code>https://i.qwarry.com/imp?id=7132&amp;pl=xandr&amp;sh=f3ab2&amp;im=${AUCTION_ID}&amp;rf=${REFERER_URL_ENC}&amp;d1=${IO_ID}&amp;d2=${CPG_ID}&amp;d3=${CREATIVE_ID}</code></p>
-<p>Click the <strong>copy button</strong> (📋) next to the tag to copy it to your clipboard, then paste it into your DSP platform's tracking settings.</p>
-<div class="note">
-  <strong>Tag structure:</strong> The tag URL includes the pixel ID, platform identifier, a security hash, and macros for the auction ID, referer URL, and dimension values that are automatically replaced by the DSP at serve time.
-</div>
-
-<!-- 13. Glossary -->
-<h2 id="glossary">13. Glossary</h2>
-<img src="reaveal_capture/glossary.png" alt="Glossary page" class="screenshot">
-<p>Access the Glossary from the navigation dropdown. It provides a searchable table of all key terms:</p>
+<!-- 18. Glossary -->
+<h2 id="glossary">18. Glossary</h2>
 <table>
   <thead><tr><th>Term</th><th>Definition</th></tr></thead>
   <tbody>
-    <tr><td><strong>Brand Safety</strong></td><td>Impressions served on URLs considered brand safe according to Qwarry's technology</td></tr>
-    <tr><td><strong>Brand Suitability</strong></td><td>Impressions served on URLs considered brand suitable. Combines brand safety categories along with page sentiment</td></tr>
-    <tr><td><strong>Semos</strong></td><td>Semantic categories by Qwarry</td></tr>
-    <tr><td><strong>Contextual Personae</strong></td><td>Semantic profiles enriched with age and gender derived from individual anonymized Mediametrie Global Internet Measurement data</td></tr>
-    <tr><td><strong>Scored Impressions</strong></td><td>Impressions delivered in URLs analyzed and categorized by Qwarry's technology</td></tr>
-  </tbody>
-</table>
-<p>The glossary also includes detailed descriptions of each Contextual Persona (Ecologist, Fashion Lover, Junk Food Lover, Gastronomist, Healthy Lifestyle, Tech Lover, etc.).</p>
-
-<!-- 14. Troubleshooting -->
-<h2 id="troubleshooting">14. Troubleshooting</h2>
-<table>
-  <thead><tr><th>Issue</th><th>Solution</th></tr></thead>
-  <tbody>
-    <tr><td>"Bad credentials"</td><td>Verify your email and password. Use "Forgot password?" if needed.</td></tr>
-    <tr><td>"Campaign not found"</td><td>Contact your account manager to verify campaign access.</td></tr>
-    <tr><td>"No data found for the selected period"</td><td>Adjust the date range or verify the campaign dates in Setup.</td></tr>
-    <tr><td>"Network error"</td><td>Check your internet connection and try again.</td></tr>
-    <tr><td>Scored % shows 0%</td><td>The pixel may not be receiving data yet. Verify the tag is correctly implemented in your DSP.</td></tr>
+    <tr><td><strong>SEMO</strong></td><td>Semantic Model — a segment that targets pages based on a semantic category score threshold</td></tr>
+    <tr><td><strong>Measured Category</strong></td><td>A semantic category scored by Qwarry's technology (e.g. Automotive, Food & Drink)</td></tr>
+    <tr><td><strong>Contextual Audience</strong></td><td>A group of user IDs who visited pages matching specific semantic categories</td></tr>
+    <tr><td><strong>Combination Segment</strong></td><td>A segment using AND/OR logic to combine multiple measured category conditions</td></tr>
+    <tr><td><strong>YouTube Segment</strong></td><td>A set of YouTube channels and videos matched via AI vector search</td></tr>
+    <tr><td><strong>YouTube Spotlight</strong></td><td>A simplified curated list of YouTube channels for specific campaign targeting</td></tr>
+    <tr><td><strong>Vector Search</strong></td><td>AI-based semantic similarity search using embeddings (Amazon Titan) and OpenSearch k-NN</td></tr>
+    <tr><td><strong>Reranking</strong></td><td>AI post-processing (Cohere) that re-scores search results for better precision</td></tr>
+    <tr><td><strong>Partner Mapping</strong></td><td>The link between a Segment Lab segment and its registration on a partner platform (Xandr, IX)</td></tr>
+    <tr><td><strong>Threshold</strong></td><td>Minimum semantic score (0-100) required for a page to qualify for a SEMO</td></tr>
+    <tr><td><strong>Frequency</strong></td><td>Number of times a user must visit matching pages to qualify for an audience</td></tr>
+    <tr><td><strong>Recency</strong></td><td>Time window during which visits are counted (max 90 days)</td></tr>
+    <tr><td><strong>Xandr</strong></td><td>Microsoft's programmatic advertising platform (formerly AppNexus)</td></tr>
+    <tr><td><strong>Index Exchange</strong></td><td>SSP partner for segment activation</td></tr>
+    <tr><td><strong>Equativ</strong></td><td>SSP partner (formerly Smart AdServer) for segment activation</td></tr>
+    <tr><td><strong>The Trade Desk (TTD)</strong></td><td>DSP partner for programmatic advertising</td></tr>
+    <tr><td><strong>Pubmatic</strong></td><td>SSP partner for segment activation</td></tr>
+    <tr><td><strong>Brand Safety</strong></td><td>Ensuring ads are not served alongside harmful or inappropriate content</td></tr>
+    <tr><td><strong>Tuning</strong></td><td>The process of configuring and refining a YouTube segment's search parameters</td></tr>
+    <tr><td><strong>Embedding</strong></td><td>A numerical vector representation of text, used for semantic similarity comparison</td></tr>
+    <tr><td><strong>k-NN</strong></td><td>k-Nearest Neighbors — the algorithm used to find similar vectors in OpenSearch</td></tr>
+    <tr><td><strong>Scan K</strong></td><td>Number of candidate vectors to evaluate during k-NN search (higher = more thorough but slower)</td></tr>
   </tbody>
 </table>
 
